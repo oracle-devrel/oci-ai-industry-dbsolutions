@@ -20,7 +20,7 @@ You have access to the following:
 
 [3]: https://docs.cohere.com/docs/the-cohere-platform
 
-### Step 1: Sign up, Sign in and get your Cohere API keys
+#### Step 1: Sign up, Sign in and get your Cohere API keys
 
 [https://dashboard.cohere.com/][4]
 
@@ -32,7 +32,7 @@ You have access to the following:
 
 [5]: images/1705676714757.png
 
-### Step 2: Login to Oracle Cloud Infrastructure.
+#### Step 2: Login to Oracle Cloud Infrastructure.
 
 Access Autonomous Database and Setup Grants by running the following commands 
 
@@ -41,9 +41,6 @@ Access Autonomous Database and Setup Grants by running the following commands
     
 [6]: images/1705675502235.png
 
-
-      
-      
       -- Login as ADMIN User 
     
     grant execute on DBMS_CLOUD to <APEX_USERNAME>;
@@ -51,9 +48,6 @@ Access Autonomous Database and Setup Grants by running the following commands
     
     -- replace <APEX_USERNAME> with your APEX Workspace Schema USERNAME for example
     -- grant execute on DBMS_CLOUD to DEMOUSER;
-      
-      
-      
 
 ![][7]
 
@@ -69,17 +63,13 @@ Access Autonomous Database and Setup Grants by running the following commands
 
 Click on the green run button to execute these commands. 
 
-### Step 3: Set up Network ACL.
+#### Step 3: Set up Network ACL.
 
 We would need this to be done so that the Database can communicate with [api.cohere.ai][9]
-    
-    
+
 [9]: http://api.cohere.ai/
 
-
-      
-      
-      BEGIN  
+    BEGIN  
         DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
              host => 'api.cohere.ai',
              ace  => xs$ace_type(privilege_list => xs$name_list('http'),
@@ -94,27 +84,18 @@ We would need this to be done so that the Database can communicate with [api.coh
       
       
 
-Step 4: Create credentials 
-    
-    
-      
-      
-      BEGIN
+#### Step 4: Create credentials
+  
+    BEGIN
         DBMS_CLOUD.create_credential('COHERE_CRED', 'COHERE', '<Key>');
     END;
     
     -- replace <Key> with your Cohere API key
-      
-      
-      
 
-Step 5: Create profile from the credentials 
-    
-    
-      
-      
-      BEGIN
-      DBMS_CLOUD_AI.create_profile(
+#### Step 5: Create profile from the credentials
+
+    BEGIN
+    DBMS_CLOUD_AI.create_profile(
           'COHERE',
           '{"provider": "cohere",
             "credential_name": "COHERE_CRED",
@@ -139,7 +120,7 @@ Step 5: Create profile from the credentials
     end;
     / 
 
-### Step 6: Set Cohere profile
+#### Step 6: Set Cohere profile
 
 As an ADMIN user, set a profile, log out as ADMIN and back in as DEMOUSER ( the APEX USER in SQL Developer), and set your profile there. 
 
@@ -149,43 +130,24 @@ As an ADMIN user, set a profile, log out as ADMIN and back in as DEMOUSER ( the 
 [10]: images/1705677774241.png
 
 Ensure that Consume group HIGH is selected 
-    
-    
-      
-      
-      EXEC DBMS_CLOUD_AI.set_profile('COHERE');
-      
-      
-      
 
-Step 7: Reality check if everything is working as expected 
-    
-    
-      
-      
-      SELECT DBMS_CLOUD_AI.GENERATE(prompt       => 'what is the total number of customers',
+      EXEC DBMS_CLOUD_AI.set_profile('COHERE');
+
+#### Step 7: Reality check if everything is working as expected
+
+    SELECT DBMS_CLOUD_AI.GENERATE(prompt       => 'what is the total number of customers',
                                   profile_name => 'COHERE',
                                   action       => 'showsql') as query
     FROM dual;
-      
-      
-      
 
 ![][11]
-    
-    
+
 [11]: images/1705677940573.png
 
-
-      
-      
-      SELECT DBMS_CLOUD_AI.GENERATE(prompt       => 'show the customers who are buying Shoes',
+    SELECT DBMS_CLOUD_AI.GENERATE(prompt       => 'show the customers who are buying Shoes',
                                   profile_name => 'COHERE',
                                   action       => 'showsql') as query
     FROM dual;
-      
-      
-      
 
 ![][12]
 
@@ -203,27 +165,18 @@ We can use chat or narrate.
 ### Chat example:
 
 If we pass the action as chat, then there is no need for a corresponding database table in our profile. 
-    
-    
-      
-      
-      SELECT DBMS_CLOUD_AI.GENERATE(prompt       => 'what is breast cancer?',
+  
+    SELECT DBMS_CLOUD_AI.GENERATE(prompt       => 'what is breast cancer?',
                                   profile_name => 'COHERE',
                                   action       => 'chat') as chat
     FROM dual;
-      
-      
-      
 
 ![][13]
     
     
 [13]: images/1705678447784.png
 
-
-      
-      
-      -- chat output
+    -- chat output
     
     Breast cancer is a type of cancer that occurs in the cells of the breasts. It can affect both men and women, although it is much more common in women. 
     
@@ -236,30 +189,18 @@ If we pass the action as chat, then there is no need for a corresponding databas
     If you have any concerns or notice any changes in your breasts, such as lumps or discoloration, it is important to consult with a healthcare professional as soon as possible. 
     
     Would you like me to go into more detail about breast cancer?
-      
-      
-      
 
 **Narrate example:** The Narrate option provides the SQL and AI narration around the generated SQL, for example. 
-    
-    
-      
-      
-      SELECT DBMS_CLOUD_AI.GENERATE
+
+    SELECT DBMS_CLOUD_AI.GENERATE
     (prompt       => 'name the customers who are married',
                       profile_name => 'COHERE',
                       action       => 'narrate') as narrate
     FROM dual;
-      
-      
-      
 
 This would generate following output. 
-    
-    
-      
-      
-      To name the customers who are married in the "DEMOUSER"."RBANK_CUSTOMERS" table, 
+
+    To name the customers who are married in the "DEMOUSER"."RBANK_CUSTOMERS" table, 
     
     you can use the following SQL query:
     ```sql
@@ -271,9 +212,6 @@ This would generate following output.
     This query will select the names of customers from the `"RBANK_CUSTOMERS"` table whose `"MARITAL_STATUS"` column value is equal to 'Married'. The results will include the names of married customers stored in the `"NAME"` column. 
     
     Would you like to know more about the query or anything specific?
-      
-      
-      
 
 ### Oracle APEX User Interface:
 
@@ -282,16 +220,13 @@ How do we create a simple user interface for this chat interface in Oracle APEX?
 Step 1: Create a table to save user prompts and corresponding SQLs or Chat that is generated from Cohere AI 
 
 ![][14]
-    
-    
+
 [14]: images/1705679214254.png
 
 
-      
-      
-      -- DDL output
+    -- DDL output
     
-      CREATE TABLE "SQLS" 
+    CREATE TABLE "SQLS" 
        (	"ID" NUMBER GENERATED ALWAYS AS IDENTITY MINVALUE 1 MAXVALUE 99999 INCREMENT BY 1 START WITH 5 CACHE 20 NOORDER  NOCYCLE  NOKEEP  NOSCALE  NOT NULL ENABLE, 
     	"QUERY" VARCHAR2(4000), 
     	"PROMPT" VARCHAR2(400), 
@@ -299,14 +234,11 @@ Step 1: Create a table to save user prompts and corresponding SQLs or Chat that 
     	"IS_VALID" VARCHAR2(1), 
     	 PRIMARY KEY ("ID")
       USING INDEX  ENABLE
-       ) ; 
+    ) ; 
 
 Now, create an APEX page item and PL/SQL region on an APEX page to save these into the above table. 
-    
-    
-      
-      
-      DECLARE
+
+    DECLARE
       
       l_input varchar2(4000) := :P59_INPUT;
       l_action varchar2(4000) := :P59_ACTION; 
@@ -329,9 +261,6 @@ Now, create an APEX page item and PL/SQL region on an APEX page to save these in
         end if;  
     
     END;
-      
-      
-      
 
 Create and Interactive Grid from SQLs table and once you click on a menu item run the SQL or show narration. 
 
@@ -343,11 +272,8 @@ Create and Interactive Grid from SQLs table and once you click on a menu item ru
 Create a popup page that takes a prompt id and, based on the select query generated it, displays the table data. 
 
 My PL/SQL Dynamic Content code in a popup region to run the Dynamic SQL and display results 
-    
-    
-      
-      
-      -- PL/SQL Dynamic Content
+
+    -- PL/SQL Dynamic Content
     -- prompt id :P60_PROMPTID is passed from main page to popup window
     -- feel free to update this code block. 
     -- Author Madhusudhan Rao
@@ -396,9 +322,6 @@ My PL/SQL Dynamic Content code in a popup region to run the Dynamic SQL and disp
             end if; 
     
     END;
-      
-      
-      
 
 ![][16]
 
@@ -411,11 +334,8 @@ My PL/SQL Dynamic Content code in a popup region to run the Dynamic SQL and disp
 [17]: images/1705681069824.png
 
 Another input prompt 
-    
-    
-      
-      
-      ...
+
+    ...
     CURSOR C1  IS 
         SELECT DBMS_CLOUD_AI.GENERATE
                (prompt  => 'show address of hospitals in OREM',
@@ -423,9 +343,6 @@ Another input prompt
                             action  => showsql ) as qry
         FROM dual; 
     ..
-      
-      
-      
 
 ![][18]
 
@@ -433,14 +350,10 @@ Another input prompt
 [18]: images/1705680254026.png
 
 ![][19]
-    
-    
+
 [19]: images/1705680407229.png
 
-
-      
-      
-      ...
+    ...
     CURSOR C1  IS 
         SELECT DBMS_CLOUD_AI.GENERATE
              (prompt  => 'list the benefits of fruit and vegetables',
@@ -450,16 +363,8 @@ Another input prompt
     ..
       
       
-      
-    
-    
-      
-      
-      prompt: list the benefits of fruit and vegetables
+    prompt: list the benefits of fruit and vegetables
     action: chat
-      
-      
-      
 
 ![][20]
 
@@ -480,10 +385,7 @@ Alternatively, you can use Oracle APEX Interactive Grid layout from a PL/SQL fun
     
 [22]: https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/sql-generation-ai-autonomous.html
 
-
-      
-      
-      Important:  The AI keyword in a SELECT statement instructs the SQL execution engine to use the LLM identified in the active AI profile to process natural language and to generate SQL.
+    Important:  The AI keyword in a SELECT statement instructs the SQL execution engine to use the LLM identified in the active AI profile to process natural language and to generate SQL.
     
     You can use the AI keyword in a query with Oracle clients such as 
     SQL Developer, OML Notebooks, and third-party tools, to interact with database in natural language.
@@ -492,73 +394,49 @@ Alternatively, you can use Oracle APEX Interactive Grid layout from a PL/SQL fun
 
 **Running Select AI in Oracle Machine Learning Notebooks**
 
-Step 1: Login to Oracle Machine Learning (from Oracle Autonomous Database Tools Configuration Tab), Click on Notebooks 
+#### Step 1: Login to Oracle Machine Learning (from Oracle Autonomous Database Tools Configuration Tab), Click on Notebooks 
 
 ![][23]
 
 
 [23]: images/1705689542488.png
 
-Step 2: Create a Notebook 
+#### Step 2: Create a Notebook 
 
 ![][24]
 
 
 [24]: images/1705689575604.png
 
-Step 3: Run script 
-    
-    
-      
-      
-      %script
+#### Step 3: Run script 
+
+    %script
     
     EXEC DBMS_CLOUD_AI.set_profile('COHERE');
-      
-      
-      
 
-Step4: Run Select AI sql 
-    
-    
-      
-      
-      %sql
+#### Step 4: Run Select AI sql 
+
+    %sql
     
     Select AI show the customers who are buying Shoes
-      
-      
-      
 
 ![][25]
-    
-    
+
 [25]: images/1705689677529.png
 
-
-      
-      
-      %sql
+    %sql
     
     Select AI list all the customers who are married
-      
-      
-      
 
 ![][26]
-    
-    
+
 [26]: images/1705725156993.png
 
-
-      
-      
-      %sql
+    %sql
     
     Select AI list all the customers, what they are buying and price 
 
 ![][27]
-
 
 [27]: images/1705725138017.png
 
@@ -600,11 +478,8 @@ To get API Keys Sign up and Sign in at [https://platform.openai.com/api-keys][33
 [34]: images/1705727388220.png
 
 and run these commands from Oracle Autonomous Database SQL Developer under Database Actions 
-    
-    
-      
-      
-      BEGIN
+
+    BEGIN
         DBMS_CLOUD.create_credential('OPENAI_CRED', 'OPENAI', 'YourOpenAIKey');
     END;
     
@@ -628,117 +503,80 @@ and run these commands from Oracle Autonomous Database SQL Developer under Datab
     END;
     
     EXEC DBMS_CLOUD_AI.set_profile('OPENAI');
-      
-      
-      
+
 
 **Troubleshooting -**
 
-1. _ ORA-20000: ORA-24247: Network access denied by access control list (ACL) _
-    
-    
-      
-      
-      ORA-20000: ORA-24247: Network access denied by access control list (ACL)
-    
-    ORA-06512: at "C##CLOUD$SERVICE.DBMS_CLOUD", line 1890
-    
-    ORA-06512: at "C##CLOUD$SERVICE.DBMS_CLOUD_AI", line 3387
-    
-    ORA-06512: at line 2
-    
-    Error at Line: 7 Column: 0
-      
-      
-      
+1. _ORA-20000: ORA-24247: Network access denied by access control list (ACL)_
 
-**Solution:**_ _ ensure that **DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE** has been run as an ADMIN user 
-    
-    
-      
-      
-      BEGIN  
-        DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-             host => 'api.cohere.ai',
-             ace  => xs$ace_type(privilege_list => xs$name_list('http'),
-                                 principal_name => '<APEX_USERNAME>',
-                                 principal_type => xs_acl.ptype_db)
-       );
-    END;
-    /
-      
-      
-      
+        ORA-20000: ORA-24247: Network access denied by access control list (ACL)
+        
+        ORA-06512: at "C##CLOUD$SERVICE.DBMS_CLOUD", line 1890
+        
+        ORA-06512: at "C##CLOUD$SERVICE.DBMS_CLOUD_AI", line 3387
+        
+        ORA-06512: at line 2
+        
+        Error at Line: 7 Column: 0
+
+    **Solution:**_ _ ensure that **DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE** has been run as an ADMIN user 
+
+        BEGIN  
+            DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
+                 host => 'api.cohere.ai',
+                 ace  => xs$ace_type(privilege_list => xs$name_list('http'),
+                                     principal_name => '<APEX_USERNAME>',
+                                     principal_type => xs_acl.ptype_db)
+           );
+        END;
+        /
 
 2. Prompts are not returning SQL query 
-    
-    
-      
-      
-      SELECT DBMS_CLOUD_AI.GENERATE
-    (prompt  => 'list the benefits of fruit and vegetables',
-     profile_name => 'COHERE',
-     action       => 'showsql' ) as qry
-     FROM dual; 
-    
-    -- returns just "list the benefits of fruit and vegetables" and no SQL
-      
-      
-      
 
-Solution: Check if Consumer Group is set to HIGH and the profile is set active 
-    
-    
-      
-      
-      EXEC DBMS_CLOUD_AI.set_profile('COHERE');
-      
-      
-      
+        SELECT DBMS_CLOUD_AI.GENERATE
+        (prompt  => 'list the benefits of fruit and vegetables',
+         profile_name => 'COHERE',
+         action       => 'showsql' ) as qry
+         FROM dual; 
+        
+        -- returns just "list the benefits of fruit and vegetables" and no SQL
+
+
+    Solution: Check if Consumer Group is set to HIGH and the profile is set active 
+
+        EXEC DBMS_CLOUD_AI.set_profile('COHERE');
 
 3. DBMS_CLOUD_AI.GENERATE are giving errors 
 
-**Solution:** Check if USER has grants provided by ADMIN and API Key has not expired 
-    
-    
-      
-      
-      grant execute on DBMS_CLOUD to DEMOUSER;
-    
-    grant execute on DBMS_CLOUD_AI to DEMOUSER;
-    
-    EXEC DBMS_CLOUD.create_credential
-    ('COHERE_CRED', 'COHERE', 'YourKey');
-      
-      
-      
+    **Solution:** Check if USER has grants provided by ADMIN and API Key has not expired 
+
+        grant execute on DBMS_CLOUD to DEMOUSER;
+        
+        grant execute on DBMS_CLOUD_AI to DEMOUSER;
+        
+        EXEC DBMS_CLOUD.create_credential
+        ('COHERE_CRED', 'COHERE', 'YourKey');
 
 4. [ORA-00923][35] : FROM keyword not found where expected 00923. 00000 - 
     
     
-[35]: https://docs.oracle.com/en/error-help/db/ora-00923/
+    [35]: https://docs.oracle.com/en/error-help/db/ora-00923/
+
+        "FROM keyword not found where expected" Cause: In a SELECT or REVOKE statement, the keyword FROM was either missing, misplaced, or misspelled. The keyword FROM must follow the last selected item in a SELECT statement or the privileges in a REVOKE statement. Action: Correct the syntax. Insert the keyword FROM where appropriate. The SELECT list itself also may be in error. If quotation marks were used in an alias, check that double quotation marks enclose the alias. Also, check to see if a reserved word was used as an alias. Error at Line: 1 Column: 14
+
+    ![][36]
 
 
-      
-      
-      "FROM keyword not found where expected" Cause: In a SELECT or REVOKE statement, the keyword FROM was either missing, misplaced, or misspelled. The keyword FROM must follow the last selected item in a SELECT statement or the privileges in a REVOKE statement. Action: Correct the syntax. Insert the keyword FROM where appropriate. The SELECT list itself also may be in error. If quotation marks were used in an alias, check that double quotation marks enclose the alias. Also, check to see if a reserved word was used as an alias. Error at Line: 1 Column: 14
-      
-      
-      
+    [36]: images/1705724106015.png
 
-![][36]
+    Error at line 1/16: ORA-00923: FROM keyword not found where expected 
+
+    ![][37]
 
 
-[36]: images/1705724106015.png
+    [37]: images/1705724094860.png
 
-Error at line 1/16: ORA-00923: FROM keyword not found where expected 
-
-![][37]
-
-
-[37]: images/1705724094860.png
-
-**Solution:** To run **Select AI** SQL commands, use Oracle Machine Learning Notebook or SQL Developer Desktop client. **Select AI** will not work in SQL Database Actions or in Oracle APEX SQL Commands. 
+    **Solution:** To run **Select AI** SQL commands, use Oracle Machine Learning Notebook or SQL Developer Desktop client. **Select AI** will not work in SQL Database Actions or in Oracle APEX SQL Commands. 
 
 ###  Demo video 
 
