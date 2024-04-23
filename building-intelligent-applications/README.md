@@ -473,7 +473,7 @@ To run Python script we need install OCI command line interface and to setup con
     region=<Region-OCID>
 
 
-**I** f you would like to know more about setting up OCI Command Line Interface, please check my video on that (Lab 3 of [AI for Healthcare][28] Livelabs) 
+If you would like to know more about setting up OCI Command Line Interface, please check my video on that (Lab 3 of [AI for Healthcare][28] Livelabs) 
 
 
 [28]: https://bit.ly/O_AI_healthcare

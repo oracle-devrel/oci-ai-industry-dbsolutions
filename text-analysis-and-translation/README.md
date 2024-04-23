@@ -73,7 +73,7 @@ Provide **User OCID** , **Tenancy OCID** , **Fingerprint** , **Private Key** and
 
 [7]: images/1706267038395.png
 
-_Note: If you are new to OCI CLI (Command Line Interface) and would like to explore it further, please check my [AI for Healthcare][8] (Lab 3) _
+_Note: If you are new to OCI CLI (Command Line Interface) and would like to explore it further, please check my [AI for Healthcare][8] (Lab 3)_
 
 
 [8]: https://bit.ly/O_AI_healthcare
@@ -87,11 +87,8 @@ This page will have the following elements
 - Button to Translate 
 - OUTPUT -> Type **Display Only** display translated output. 
 - SOURCE_LANG -> Type **Display Only** to display detected source language. 
-    
-    
-      
-      
-      At the time of this article, the following languages are supported:
+
+    At the time of this article, the following languages are supported:
     
     Arabic (ar)
     Brazilian Portuguese (pt-BR)
@@ -153,11 +150,8 @@ Select **When Button Pressed** and select **Translate** button
 Process on button click 
 
 Write the **PL/SQL code** block to invoke Language REST API service. Unless if you want to explicitly mention input language we can let the service auto detect input language with **auto** as **language code** . 
-    
-    
-      
-      
-      --REST API for OCI Language Translation Service, your selected region can vary from us-phoenix-1 to some other region.  
+
+    --REST API for OCI Language Translation Service, your selected region can vary from us-phoenix-1 to some other region.  
     
     https://language.aiservice.us-phoenix-1.oci.oraclecloud.com/20221001/actions/batchLanguageTranslation
     
@@ -193,11 +187,8 @@ Write the **PL/SQL code** block to invoke Language REST API service. Unless if y
       
 
 Couple of changes that you would need to make in this code, replace your web credentials in the variable **l_web_cred** , compartment id in the JSON payload **l_body** and page numbers for example :P87_INPUT will be different as per your APEX page item. 
-    
-    
-      
-      
-      -- Complete code for Text translation 
+
+    -- Complete code for Text translation 
     -- Author: Madhusudhan Rao
     
     DECLARE
@@ -259,9 +250,7 @@ Couple of changes that you would need to make in this code, replace your web cre
              End Loop; 
              
     END;
-      
-      
-      
+
 
 You can download this source from [my GitHub location][13]
 
@@ -276,55 +265,32 @@ Now we are all set to translate our text content by running the page. click on *
 [14]: images/1706289423938.png
 
 Running the APEX page 
-    
-    
-      
-      
-      Input: Hello beautiful world
+
+    Input: Hello beautiful world
     Target: Simplified Chinese
     Output: 你好，美丽的世界
-      
-      
-      
 
 ![][15]
-    
-    
+
 [15]: images/1706269487347.png
 
 
-      
-      
-      Input: Good morning have a great day
+    Input: Good morning have a great day
     Italian: Buongiorno buona giornata
-      
-      
-      
 
 ![][16]
-    
-    
+
 [16]: images/1706269657080.png
 
-
-      
-      
-      Input: Buongiorno buona giornata
+    Input: Buongiorno buona giornata
     Japanese: おはようございます 
 
 ![][17]
-    
-    
+
 [17]: images/1706269748424.png
 
-
-      
-      
-      Input: good morning have a great day
+    Input: good morning have a great day
     Arabic: صباح الخير لديك يوم عظيم
-      
-      
-      
 
 ![][18]
 
