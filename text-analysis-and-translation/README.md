@@ -334,40 +334,33 @@ Running the APEX page
 ### Troubleshooting :-
 
 1. BadRequest 
-    
-    
-      
-      
-      {
-    "code" : "BadRequest",
-    "message" : "Bad request body format. See the documentation for details."
-    }
+
+        {
+            "code" : "BadRequest",
+            "message" : "Bad request body format. See the documentation for details."
+        }
       
       
       
 
-**Solution** : Please ensure that the request payload contains documents and not document, as shown below 
-    
-    
-     {               
-         "documents": [  { 
-            "key": "1x",
-            "text": "'||l_input||'",
-            "languageCode": "auto"  
-          } ],
-          "targetLanguageCode": "en" ,
-           "compartmentId": "Your-CompartmentId"
-    
-    } 
+    **Solution** : Please ensure that the request payload contains documents and not document, as shown below 
+         
+         {               
+             "documents": [  { 
+                "key": "1x",
+                "text": "'||l_input||'",
+                "languageCode": "auto"  
+              } ],
+              "targetLanguageCode": "en" ,
+               "compartmentId": "Your-CompartmentId"
+        
+         } 
 
 2. Authentication Issues 
-    
-    
-      
-      
-      ora_sqlerrm: ORA-01403: no data found ORA-06512: at "APEX_230200.WWV_FLOW_PROCESS_NATIVE", line 55 ORA-06512: at "APEX_230200.WWV_FLOW_CODE_EXEC_PLSQL", line 126 ORA-06512: at "APEX_230200.WWV_FLOW_DYNAMIC_EXEC", line 2647 ORA-06512: at "APEX_230200.WWV_FLOW_CREDENTIAL", line 116 ORA-06512: at "APEX_230200.WWV_FLOW_CREDENTIAL", line 107 ORA-06512: at 
 
-**Solution** : Please ensure that the web credentials supplied is correct. 
+          ora_sqlerrm: ORA-01403: no data found ORA-06512: at "APEX_230200.WWV_FLOW_PROCESS_NATIVE", line 55 ORA-06512: at "APEX_230200.WWV_FLOW_CODE_EXEC_PLSQL", line 126 ORA-06512: at "APEX_230200.WWV_FLOW_DYNAMIC_EXEC", line 2647 ORA-06512: at "APEX_230200.WWV_FLOW_CREDENTIAL", line 116 ORA-06512: at "APEX_230200.WWV_FLOW_CREDENTIAL", line 107 ORA-06512: at 
+
+    **Solution** : Please ensure that the web credentials supplied is correct. 
 
 ### Demo video
 
