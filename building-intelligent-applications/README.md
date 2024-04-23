@@ -38,21 +38,15 @@ click on **playground** in the left navigation and select the **default** settin
 [4]: images/1706369240032.png
 
 ![][5]
-    
-    
+
 [5]: images/1706369250162.png
 
 
-      
-      
-      Input: How is the weather today in Las Vegas
+    Input: How is the weather today in Las Vegas
     
     Output: It is currently overcast in Las Vegas with a high of 63 degrees Fahrenheit (17 Celsius). There is a 15% chance of precipitation today but it should mostly clear up by this afternoon with chances of partly cloudy skies. Would you like to know more about the weather in Las Vegas? I can also tell you about upcoming forecasts if you plan to be there for a few days.
     
     Would you like to know more about the weather in other cities?
-      
-      
-      
 
 At this stage you can view **Java** or **Python** code in the console. 
 
@@ -147,10 +141,7 @@ Copy paste this PL/SQL code block, you can also download it from [my GitHub repo
     
 [15]: https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/
 
-
-      
-      
-      -- PL/SQL code block to Generate AI Text from Oracle Generative AI service
+    -- PL/SQL code block to Generate AI Text from Oracle Generative AI service
     -- Author: Madhusudhan Rao
     -- Replace Compartment OCID, Web credentials and page number for APEX page items P91_AI_INPUT, P91_AI_OUTPUT
     ----------------------
@@ -210,19 +201,13 @@ Copy paste this PL/SQL code block, you can also download it from [my GitHub repo
         end if;
     
     END;
-      
-      
-      
+
 
 Few request parameters: [(reference)][16]
-    
-    
+
 [16]: https://docs.oracle.com/en-us/iaas/Content/generative-ai/concepts.htm
-
-
-      
-      
-      Tokens: A token is a word, part of a word, or a punctuation. For example, apple is a token and friendship is made up of two tokens, friend and ship.  
+  
+    Tokens: A token is a word, part of a word, or a punctuation. For example, apple is a token and friendship is made up of two tokens, friend and ship.  
     
     Temperature:How random to generate the output text. To generate the same output for a prompt every time you run that prompt, use 0. To generate a random new text for that prompt, increase the temperature. Default temperature is 1
     
@@ -231,14 +216,10 @@ Few request parameters: [(reference)][16]
 Run the page by pressing the **Green** button 
 
 ![][17]
-    
-    
+
 [17]: images/1706373094904.png
 
-
-      
-      
-      Input: What is Neuroscience
+    Input: What is Neuroscience
     
     AI Response: Neuroscience is a branch of science that focuses on studying the structure and function of the nervous system, and how the nervous system processes information and conducts behavior. It is a multidisciplinary field that combines concepts and techniques from various disciplines, including biology, chemistry, physics, and psychology, to understand how the brain and nervous system work and interact with the rest of the body.
     
@@ -252,14 +233,10 @@ Run the page by pressing the **Green** button
       
 
 ![][18]
-    
-    
+
 [18]: images/1706373598487.png
 
-
-      
-      
-      Input: Write a mail to my manager requesting leave on February 4th on my daughter's birthday.
+    Input: Write a mail to my manager requesting leave on February 4th on my daughter's birthday.
     
     AI Response: 
     
@@ -279,19 +256,12 @@ Run the page by pressing the **Green** button
     [Your Name]
     
     Do you want me to provide you with some alternatives in case your manager rejects the request?
-      
-      
-      
 
 ![][19]
-    
-    
+
 [19]: images/1706373822085.png
 
-
-      
-      
-      Input: Generate a Java program to calculate the sum of two numbers.
+    Input: Generate a Java program to calculate the sum of two numbers.
     
     AI Response:
     
@@ -315,19 +285,13 @@ Run the page by pressing the **Green** button
     In this program, we define a class called SumCalculator with a main method. Inside the main method, we define two double variables num1 and num2 to hold the values of the numbers for which we want to calculate the sum. We then call the calculateSum method, passing in the values of num1 and num2, and store the result in the sum variable. Finally, we print out the sum of the two numbers.
     
     You can modify the values of num1 and num2 in the main method to calculate the sum of different numbers. This program demonstrates the basic concept of calculating the sum of two numbers using Java.
-      
-      
-      
+
 
 ![][20]
-    
-    
+
 [20]: images/1706373972658.png
 
-
-      
-      
-      Input: Write a script for a documentary movie based on the Taj Mahal.
+    Input: Write a script for a documentary movie based on the Taj Mahal.
     AI Response: INT. THE Taj Mahal - DAY
     
     As we wake up to another sunny morning in Agra, the city which is immensely lucky to have the Taj Mahal as its prime attraction, we realize how truly special this place is with each passing day.
@@ -341,14 +305,10 @@ Run the page by pressing the **Green** button
     .. 
 
 ![][21]
-    
-    
+
 [21]: images/1706374244953.png
 
-
-      
-      
-      Input: Generate SQL to find hospital names and addresses in Las Vegas.
+    Input: Generate SQL to find hospital names and addresses in Las Vegas.
     
     AI Response: Here's a potential SQL query that might help you retrieve hospital names and addresses in Las Vegas:
     
@@ -367,19 +327,13 @@ Run the page by pressing the **Green** button
     It's always recommended to check the documentation of your specific database system to ensure compatibility and optimal query performance.
     
     Please replace the table and column names with the actual names used in your database schema.
-      
-      
-      
+
 
 ![][22]
-    
-    
+
 [22]: images/1706374397694.png
 
-
-      
-      
-      Input: How to make mixed fruit jam
+    Input: How to make mixed fruit jam
     
     AI Response: 
     
@@ -415,30 +369,21 @@ Yes, it can detect source language, here are some examples
     
 [24]: images/1706518398469.png
 
-
-      
-      
-      Japanese Input Source: 今日の東京の天気はどうですか   
+    Japanese Input Source: 今日の東京の天気はどうですか   
     (Translated Input: How is the weather in Tokyo today?)
     
     AI Response: The weather in Tokyo today can be described as follows. Cloudy with a high of 74°F and a low of 65°F. The sky will be clear throughout the day, with only a 20% chance of precipitation.
     
     Is there anything specific you would like to know about the weather in Tokyo today? I can provide more detailed information or answer questions about specific aspects such as wind speed, humidity, or precipitation chances.
-      
-      
-      
+
 
 How about Simplified Chinese input text? 
 
 ![][25]
-    
-    
+
 [25]: images/1706518347668.png
 
-
-      
-      
-      Simplified Chinese Input Source: 谁建造了中国的长城  
+    Simplified Chinese Input Source: 谁建造了中国的长城  
     (Translated Input: Who built the great wall of China?)
     
     AI Response: It is not accurate to say that "who" built "Longmen" or "Changcheng" (as it was historically referred to in Chinese literature). "Longmen" or "Changcheng" was not a physical entity or a city like the modern-day Beijing or Shanghai. Rather, it refers to a series of ancient stone gates (or "gates of longmen") that were part of the Great Wall of China.
@@ -450,9 +395,7 @@ How about Simplified Chinese input text?
     It is inaccurate to pinpoint a specific individual or organization as the builders of the wall. The construction and maintenance of the wall involved the collective efforts of many rulers, architects, engineers, and laborers over centuries.
     
     Would you like me to provide more detailed information on the construction or history of the Great Wall of China?
-      
-      
-      
+
 
 ### OCI Generative AI Demo video
 
@@ -473,11 +416,8 @@ Regards, [Madhusudhan Rao][27]
 ### Optional Section
 
 Alternatively, if you wish to run the Generative AI services using Python code you can copy and paste the code generated and run the Python script ( or Java code) 
-    
-    
-      
-      
-      # coding: utf-8
+
+    # coding: utf-8
     # Copyright (c) 2023, Oracle and/or its affiliates.  All rights reserved.
     # This software is dual-licensed to you under the Universal Permissive License (UPL) 1.0 as shown at https://oss.oracle.com/licenses/upl or Apache License 2.0 as shown at http://www.apache.org/licenses/LICENSE-2.0. You may choose either license.
     
@@ -521,11 +461,8 @@ Alternatively, if you wish to run the Generative AI services using Python code y
     print(generate_text_response.data) 
 
 To run Python script we need install OCI command line interface and to setup config file, an example shown below 
-    
-    
-      
-      
-      vim ~/.oci/config
+
+    vim ~/.oci/config
     ..
     
     [DEFAULT]
@@ -534,9 +471,7 @@ To run Python script we need install OCI command line interface and to setup con
     key_file=/<Path>/.oci/keyfilename.pem
     tenancy=<Tenancy-OCID>
     region=<Region-OCID>
-      
-      
-      
+
 
 **I** f you would like to know more about setting up OCI Command Line Interface, please check my video on that (Lab 3 of [AI for Healthcare][28] Livelabs) 
 
