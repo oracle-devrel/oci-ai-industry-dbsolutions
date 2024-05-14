@@ -337,17 +337,7 @@ How about Simplified Chinese input text?
 
 **Conclusion:** We just saw how we can build intelligent applications with Oracle Generative AI and Oracle APEX as a user interface. We used PL/SQL code to make REST API calls to Oracle Generative AI Services. We also saw how Generative AI can provide smart answers, be it writing a letter or story telling or generating a code block or SQL statements and many other smart questions and answers. The possibilities with Generative AI are endless and innovative. 
 
-We can also use OCI AI Language Translation services to translate the AI response to supported languages. please refer my [previous article][26] on that. 
-
-
-[26]: https://www.linkedin.com/pulse/how-translate-text-using-oci-ai-language-oracle-apex-madhusudhan-rao-seq0f
-
-Thanks for reading, liking, sharing and reposting - Have a great day. 
-
-Regards, [Madhusudhan Rao][27]
-
-
-[27]: https://www.linkedin.com/article/edit/7157023693200601088/#
+We can also use OCI AI Language Translation services to translate the AI response to supported languages.
 
 ### Optional Section
 
@@ -426,9 +416,3 @@ References:
 
 [30]: https://docs.oracle.com/en-us/iaas/api/#/en/generative-ai-inference/20231130/GenerateTextResult/GenerateText
 
-Links to my other related articles and LiveLabs 
-
-[How to Translate text using OCI AI Language and Oracle APEX][31]
-
-
-[31]: https://www.linkedin.com/pulse/how-translate-text-using-oci-ai-language-oracle-apex-madhusudhan-rao-seq0f
