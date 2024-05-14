@@ -130,8 +130,6 @@ We would like to execute the code **When Button is Pressed** , select the button
 
 Download the [genai_plsql.sql](genai_plsql.sql), replace your compartment id, credential name and page numbers in input and output APEX page items. [API Guide.][14]
 
-
-[13]: https://github.com/madhusudhanrao-ppm/code-assets/blob/main/AI-for-Financial-Services/genai_plsql.sql
 [14]: https://docs.oracle.com/en-us/iaas/api/#/en/generative-ai-inference/20231130/
 
 **API Endpoints:**
