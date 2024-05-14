@@ -2,18 +2,12 @@
 
 In this article, we will learn how to generate SQLs or chat using **#Cohere** AI or **#OpenAI** with Oracle # **SelectAI** to respond to users' input prompts. DBMS_CLOUD_AI package facilitates and configures the translation of natural language prompts to SQL statements. Oracle **#APEX** helps create a user interface for accepting user inputs and displaying AI results. Use Oracle Machine Learning #OML notebooks to run some of the Select AI SQLs. 
 
-This article is a continuation of my [previous article][1] . We discussed Retrieval Augmented generation ( **#RAG** ), which is a **#NaturalLanguage** Processing ( **#NLP** ) technique that combines information retrieval and natural language understanding with the content generation or, in simple words, an intelligent chatbot that can talk to database - generate SQL, run queries and display results on user's chat window. we will take an example of using Cohere AI with Oracle Autonomous Database with customer info and US Hospitals data tables; you can download these table data from [my GitHub repo][2] . 
-
-
-[1]: https://www.linkedin.com/pulse/retrieval-augmented-generation-chatbots-aimlnlp-based-madhusudhan-rao-pgodf
-[2]: https://github.com/madhusudhanrao-ppm/code-assets/tree/main/AI-for-Financial-Services
-
 ### Assumptions:
 
 You have access to the following: 
 
-1. Oracle Autonomous Database with ADMIN user access. 
-2. API Keys from Cohere or OpenAI - please check their terms and conditions for usage. [Cohere - Developer Guide][3]
+1. Oracle Autonomous Database with ADMIN user access
+2. API Keys from Cohere - please check their terms and conditions for usage. [Cohere - Developer Guide][3]
 3. Oracle APEX workspace (Optional) or any non-ADMIN Database USER 
 4. APEX username (<APEX_USERNAME>) is the same as schema name (Optional) 
 
@@ -462,50 +456,7 @@ Click on various chart icons to change visualisation
 
 [31]: images/1705725354738.png
 
-If you plan to use [OpenAI][32] , then it would need a few setup changes listed below and the OpenAI API Keys. 
-
-
-[32]: https://openai.com/
-
-To get API Keys Sign up and Sign in at [https://platform.openai.com/api-keys][33]
-
-
-[33]: https://platform.openai.com/api-keys
-
-![][34]
-
-
-[34]: images/1705727388220.png
-
-and run these commands from Oracle Autonomous Database SQL Developer under Database Actions 
-
-    BEGIN
-        DBMS_CLOUD.create_credential('OPENAI_CRED', 'OPENAI', 'YourOpenAIKey');
-    END;
-    
-    BEGIN
-        DBMS_CLOUD_AI.CREATE_PROFILE(
-            profile_name => 'OPENAI',
-            attributes => '{ "provider": "openai",
-                             "credential_name": "OPENAI_CRED",
-                             "object_list": [{"owner": "<APEX_SCHEMA_USER>", "name": "<DB_TABLE>"}]
-                           }' 
-        );
-    END;
-    
-    BEGIN
-        DBMS_NETWORK_ACL_ADMIN.APPEND_HOST_ACE(
-              HOST => 'api.openai.com',
-              ACE => XS$ACE_TYPE(PRIVILEGE_LIST => XS$NAME_LIST('http'), 
-                                 PRINCIPAL_NAME => '<APEX_SCHEMA_USER>',
-                                 PRINCIPAL_TYPE => XS_ACL.PTYPE_DB)
-    );
-    END;
-    
-    EXEC DBMS_CLOUD_AI.set_profile('OPENAI');
-
-
-**Troubleshooting -**
+### Troubleshooting
 
 1. _ORA-20000: ORA-24247: Network access denied by access control list (ACL)_
 
@@ -578,36 +529,3 @@ and run these commands from Oracle Autonomous Database SQL Developer under Datab
 
     **Solution:** To run **Select AI** SQL commands, use Oracle Machine Learning Notebook or SQL Developer Desktop client. **Select AI** will not work in SQL Database Actions or in Oracle APEX SQL Commands. 
 
-###  Demo video 
-
-Thanks for reading, liking, and sharing - have a great day. 
-
-Thanks & Regards, 
-
-[Madhusudhan Rao][38]
-
-
-[38]: https://www.linkedin.com/in/madhusudhanraobm/
-
-Links to my other related articles and LiveLabs 
-
-- [How to build intelligent applications using Oracle Generative AI and Oracle APEX][39]
-- [How to Translate text using OCI AI Language and Oracle APEX][40]
-- [How to use Oracle Select AI with Cohere or OpenAI to Generate SQLs from Natural Language][41]
-- [Retrieval Augmented Generation (Database Chatbots)][42]
-- [How to create dynamic websites on an always-free Oracle Cloud Instance][43]
-- [Working with Oracle APEX and Oracle Analytics Cloud platform][44]
-- [Working with JSON-Relational Duality Views and Oracle APEX][45]
-- [How to Integrate Google Cloud YouTube APIs with Oracle APEX][46]
-- [AI for Healthcare][47]
-
-
-[39]: https://www.linkedin.com/pulse/how-build-intelligent-apps-oracle-generative-ai-apex-madhusudhan-rao-z423f/
-[40]: https://www.linkedin.com/pulse/how-translate-text-using-oci-ai-language-oracle-apex-madhusudhan-rao-seq0f
-[41]: https://www.linkedin.com/pulse/how-use-oracle-select-ai-cohere-openai-generate-sqls-from-rao-zabjf
-[42]: https://www.linkedin.com/pulse/retrieval-augmented-generation-chatbots-aimlnlp-based-madhusudhan-rao-pgodf
-[43]: https://www.linkedin.com/pulse/how-create-enterprise-grade-dynamic-website-always-free-rao-9hgmf/
-[44]: https://www.linkedin.com/pulse/working-oracle-apex-analytics-platform-madhusudhan-rao-tfwvf
-[45]: https://www.linkedin.com/pulse/working-json-relational-duality-views-oracle-apex-madhusudhan-rao-a2izf
-[46]: https://www.linkedin.com/pulse/how-integrate-google-cloud-youtube-apis-oracle-apex-madhusudhan-rao
-[47]: https://bit.ly/O_AI_healthcare
