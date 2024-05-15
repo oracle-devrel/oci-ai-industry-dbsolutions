@@ -252,10 +252,7 @@ Couple of changes that you would need to make in this code, replace your web cre
     END;
 
 
-You can download this source from [my GitHub location][13]
-
-
-[13]: https://github.com/madhusudhanrao-ppm/code-assets/blob/main/AI-for-Financial-Services/langai.sql
+You can download [the source here](langai.sql)
 
 Now we are all set to translate our text content by running the page. click on **run** green button. 
 
@@ -328,40 +325,9 @@ Running the APEX page
 
     **Solution** : Please ensure that the web credentials supplied is correct. 
 
-### Demo video
-
-Thanks for reading, liking, sharing, reposting - have a great day. 
-
-Regards [Madhusudhan Rao][19]
-
-
-[19]: https://www.linkedin.com/in/madhusudhanraobm/
 
 References:[_AI for Healthcare_][20] and [_AI for Healthcare_][21]
 
 
 [20]: https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/tools/oci-cli/3.37.6/oci_cli_docs/cmdref/ai/language/batch-language-translation.html
 [21]: https://docs.oracle.com/en-us/iaas/api/#/en/language/20221001/
-
-Links to my other related articles and LiveLabs 
-
-- [How to build intelligent applications using Oracle Generative AI and Oracle APEX][22]
-- [How to Translate text using OCI AI Language and Oracle APEX][23]
-- [How to use Oracle Select AI with Cohere or OpenAI to Generate SQLs from Natural Language][24]
-- [Retrieval Augmented Generation (Database Chatbots)][25]
-- [How to create dynamic websites on an always-free Oracle Cloud Instance][26]
-- [Working with Oracle APEX and Oracle Analytics Cloud platform][27]
-- [Working with JSON-Relational Duality Views and Oracle APEX][28]
-- [How to Integrate Google Cloud YouTube APIs with Oracle APEX][29]
-- [AI for Healthcare][30]
-
-
-[22]: https://www.linkedin.com/pulse/how-build-intelligent-apps-oracle-generative-ai-apex-madhusudhan-rao-z423f/
-[23]: https://www.linkedin.com/pulse/how-translate-text-using-oci-ai-language-oracle-apex-madhusudhan-rao-seq0f
-[24]: https://www.linkedin.com/pulse/how-use-oracle-select-ai-cohere-openai-generate-sqls-from-rao-zabjf
-[25]: https://www.linkedin.com/pulse/retrieval-augmented-generation-chatbots-aimlnlp-based-madhusudhan-rao-pgodf
-[26]: https://www.linkedin.com/pulse/how-create-enterprise-grade-dynamic-website-always-free-rao-9hgmf/
-[27]: https://www.linkedin.com/pulse/working-oracle-apex-analytics-platform-madhusudhan-rao-tfwvf
-[28]: https://www.linkedin.com/pulse/working-json-relational-duality-views-oracle-apex-madhusudhan-rao-a2izf
-[29]: https://www.linkedin.com/pulse/how-integrate-google-cloud-youtube-apis-oracle-apex-madhusudhan-rao
-[30]: https://bit.ly/O_AI_healthcare
