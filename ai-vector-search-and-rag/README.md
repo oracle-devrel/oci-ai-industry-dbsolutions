@@ -46,7 +46,7 @@ ONNX, or Open Neural Network Exchange, is an open-source format for representing
 ![][2]
 
 
-[2]: images/1715344779151.png
+[2]: https://media.licdn.com/dms/image/D5612AQGjt1gi9FuYPg/article-inline_image-shrink_1500_2232/0/1715344779151?e=1727308800&v=beta&t=pPi-iwpUl9LwOo96eE3qEPrwijOJCT1iQjaWe6urh74
 
 Open Neural Network Exchange or ONNX is an open standard format of machine learning models. By using the Oracle Machine Learning Services REST API, you can deploy and score your ONNX format models. The REST API is exposed as part of the Oracle Machine Learning Services on Oracle Autonomous Database cloud service.
 
@@ -71,7 +71,7 @@ The Oracle Machine Learning Services REST API supports ONNX format model deploym
 ![][4]
 
 
-[4]: images/1715417391489.png
+[4]: https://media.licdn.com/dms/image/D4D12AQG9jlosfL7gOQ/article-inline_image-shrink_1500_2232/0/1715417391489?e=1727308800&v=beta&t=9ybWKvRfSmRYrX-hsouSTm_r36y2CoxwUAk4kLSzdI8
 
 To prepare large unstructured textual data (for example, a PDF or Word document), you first transform the data into plain text and then pass the resulting text through _Chunker_. The Chunker then splits the text into smaller chunks using a process known as **chunking**. A single document may be split into many chunks, each transformed into a vector.
 
@@ -80,7 +80,7 @@ To prepare large unstructured textual data (for example, a PDF or Word document)
 ![][5]
 
 
-[5]: images/1715417730257.png
+[5]: https://media.licdn.com/dms/image/D4D12AQHP_p8faXa74g/article-inline_image-shrink_1500_2232/0/1715417730257?e=1727308800&v=beta&t=PJ2vFQGJVWb1iZrli3nzuz18SjPMfCO0i9T_YyVq0Pk
 
 ###  3. Short Demo Video for this article
 
@@ -118,12 +118,12 @@ To download and extract the OML4Py client installation file, do the following:
 ![][8]
 
 
-[8]: images/1715346700078.png
+[8]: https://media.licdn.com/dms/image/D4D12AQE-A8sdRrobYg/article-inline_image-shrink_1500_2232/0/1715346700078?e=1727308800&v=beta&t=R7o25gEs2RSs4yH6zhCHBwbccOl4667HMvYeW7sY_B0
 
 ![][9]
 
 
-[9]: images/1715347038280.png
+[9]: https://media.licdn.com/dms/image/D4D12AQE9pgPgaiGd7Q/article-inline_image-shrink_1500_2232/0/1715347038280?e=1727308800&v=beta&t=X51cMaKnl8nyRIE5tX801m5DrfXcB29FNu-7-xPyfTk
 
 You will have to download this locally and then upload it to cloud machine using SCP, [please refer my previous article][10] on SCP if required.
 
@@ -225,7 +225,7 @@ Load the packages below to ensure they have been installed successfully. Start P
 ![][12]
 
 
-[12]: images/1715349973247.png
+[12]: https://media.licdn.com/dms/image/D4D12AQFCmIYAzN8Ihg/article-inline_image-shrink_1500_2232/0/1715349973247?e=1727308800&v=beta&t=MsnWtc202V_qDJvZQEyFZykn9n18qF7Hv_BzA8agTJo
 
 **Run the OML4Py Client Installation Script**
 
@@ -256,7 +256,7 @@ Load the packages below to ensure they have been installed successfully. Start P
 ![][13]
 
 
-[13]: images/1715499456328.png
+[13]: https://media.licdn.com/dms/image/D4D12AQGfPdTOscqcTA/article-inline_image-shrink_1500_2232/0/1715499456328?e=1727308800&v=beta&t=y9MGRpAvKhBABv2FZwDVC1syKKqnk2NP_u3ih42_vWk
 
 ###  5. Convert Pretrained Models to ONNX Format
 
@@ -325,7 +325,7 @@ I would like to download 2 PDFs, one related to [Breast cancer facts and figures
 ![][18]
 
 
-[18]: images/1715498322584.png
+[18]: https://media.licdn.com/dms/image/D4D12AQFjxiAlhDumHg/article-inline_image-shrink_1000_1488/0/1715498322584?e=1727308800&v=beta&t=LoWczJCqNE_HSK6beW9JC11UAfY-CSZfPvBldbyzIn0
 
 and the other related to [COVID-19][19]
 
@@ -335,7 +335,7 @@ and the other related to [COVID-19][19]
 ![][20]
 
 
-[20]: images/1715498408860.png
+[20]: https://media.licdn.com/dms/image/D4D12AQGZ39I6onR1uw/article-inline_image-shrink_1000_1488/0/1715498408860?e=1727308800&v=beta&t=11A6jH2TSb1wjqFAg-b6bX5euYhVZMDguqRJufKJouc
 
 _Please Note: You can use any other PDFs as required to train. And I don't own any of these PDF files or content in it. This is just for demonstration purposes only._
 
@@ -413,7 +413,7 @@ Connect as DOCUSER
 ![][21]
 
 
-[21]: images/1715361732305.png
+[21]: https://media.licdn.com/dms/image/D4D12AQH54ezC7LpIsw/article-inline_image-shrink_1500_2232/0/1715361732305?e=1727308800&v=beta&t=uuZ2sASmOJSV3ihugiUMlU7seHgdBoZOgBbw7eq86zQ
 
 Run UTL_TO_TEXT to convert the PDF document into text format:
 
@@ -425,7 +425,7 @@ Run UTL_TO_TEXT to convert the PDF document into text format:
 ![][22]
 
 
-[22]: images/1715358256114.png
+[22]: https://media.licdn.com/dms/image/D4D12AQH4zl3AYw5A2A/article-inline_image-shrink_1500_2232/0/1715358256114?e=1727308800&v=beta&t=GySuEUQvXtwlVCTwYVFp2-Ax4I0GNN3ZnrnmSX1_M10
 
 JSON parameters to use normalization and some of the custom chunking specifications:
 
@@ -446,7 +446,7 @@ JSON parameters to use normalization and some of the custom chunking specificati
 ![][23]
 
 
-[23]: images/1715358954759.png
+[23]: https://media.licdn.com/dms/image/D4D12AQHNBN4rJoKO9Q/article-inline_image-shrink_1000_1488/0/1715358954759?e=1727308800&v=beta&t=WqFq1_gy4QlLrL8nnYUUXi8_uwMidxB0FXgnyMKZgqw
 
 Convert chunks to embeddings:
 
@@ -495,7 +495,7 @@ This creates a doc_chunks table lets check this table:
 ![][24]
 
 
-[24]: images/1715359808238.png
+[24]: https://media.licdn.com/dms/image/D4D12AQH9AjCJjVJ8eg/article-inline_image-shrink_1500_2232/0/1715359808238?e=1727308800&v=beta&t=ZvYmynKj2adk7jb29D1F3kFlJe6CcMzCmIniVn_YVJM
 
 
      Select EMBED_DATA, EMBED_VECTOR from doc_chunks where rownum < 4;
@@ -503,7 +503,7 @@ This creates a doc_chunks table lets check this table:
 ![][25]
 
 
-[25]: images/1715359583739.png
+[25]: https://media.licdn.com/dms/image/D4D12AQE8MFu9qwXarw/article-inline_image-shrink_1500_2232/0/1715359583739?e=1727308800&v=beta&t=rh2wFxQ05qmUJ8CbH1RCsc6iccyd625evCvsjvOe2xI
 
 
     select count(*) from doc_chunks;
@@ -519,21 +519,21 @@ Login to Oracle APEX INTERNAL workspace as ADMIN user and create a new workspace
 ![][26]
 
 
-[26]: images/1715360729372.png
+[26]: https://media.licdn.com/dms/image/D4D12AQFxrLtVZSWRRg/article-inline_image-shrink_1000_1488/0/1715360729372?e=1727308800&v=beta&t=vg6yBQyEkwH03kq-f8dzdrewsXE2HEEJOiCKTZtyQeY
 
 Re-use existing schema -
 
 ![][27]
 
 
-[27]: images/1715360772535.png
+[27]: https://media.licdn.com/dms/image/D4D12AQFCIQ-GwU6PUw/article-inline_image-shrink_1000_1488/0/1715360772535?e=1727308800&v=beta&t=qOCydSwjfhFdA8uqIZ0_pFMnEV4BjS5yAygUR4m3fsQ
 
 Click on Create Workspace -
 
 ![][28]
 
 
-[28]: images/1715360813529.png
+[28]: https://media.licdn.com/dms/image/D4D12AQFWRFrAfaRBQQ/article-inline_image-shrink_1000_1488/0/1715360813529?e=1727308800&v=beta&t=UIrjYMSjKjiBGNkc0VTn257cq_4GvFb9cqpi8tx3UyY
 
 ###  10. Create Vector AI Search Application to Search PDF documents
 
@@ -542,7 +542,7 @@ Access Oracle APEX Navigation > SQL Commands > Create a function with following 
 ![][29]
 
 
-[29]: images/1715361311977.png
+[29]: https://media.licdn.com/dms/image/D4D12AQEqp3TtQ5VsJg/article-inline_image-shrink_1000_1488/0/1715361311977?e=1727308800&v=beta&t=QClmk8-OVUhYYdYijf6IRFeUdsRpTHheZY0y3qiXaFM
 
 [Download code from my git repo][30]
 
@@ -554,7 +554,7 @@ Now, lets create a simple Oracle APEX page in any application have an input text
 ![][31]
 
 
-[31]: images/1715362104559.png
+[31]: https://media.licdn.com/dms/image/D4D12AQH9usGHWfpzDg/article-inline_image-shrink_1500_2232/0/1715362104559?e=1727308800&v=beta&t=9PqH4RQ_ptOD15IT-CDRYtcxteNy4MLUx-xF12LhZso
 
 Where the PL/SQL Response Block will call rag_function as shown below.
 
@@ -571,34 +571,34 @@ Just to ensure that we dont call the function without any data, lets add server 
 ![][32]
 
 
-[32]: images/1715362253715.png
+[32]: https://media.licdn.com/dms/image/D4D12AQGxtxI5-OO9qg/article-inline_image-shrink_1500_2232/0/1715362253715?e=1727308800&v=beta&t=m9713Ws0ziCcUfQ2C9enIKQ61l3cbX4qYs8oXuHr-cQ
 
 Run the page with various inputs - this will basically query the uploaded PDF files using Oracle AI Vector Search
 
 ![][33]
 
 
-[33]: images/1715360071118.png
+[33]: https://media.licdn.com/dms/image/D4D12AQF9Td5YWuAJCw/article-inline_image-shrink_1000_1488/0/1715360071118?e=1727308800&v=beta&t=Echaerv72jfcg3I6STIgb-RT-_3a5Bu2W55mZzWOvKc
 
 ![][34]
 
 
-[34]: images/1715360143219.png
+[34]: https://media.licdn.com/dms/image/D4D12AQE0ETF9_CQxPg/article-inline_image-shrink_1000_1488/0/1715360143219?e=1727308800&v=beta&t=Dvz8WDZvTrHsz4X1GdJEBzecyX9Y1F8k_J5NyqkaYQo
 
 ![][35]
 
 
-[35]: images/1715360333435.png
+[35]: https://media.licdn.com/dms/image/D4D12AQEg7q6lLf6e7Q/article-inline_image-shrink_1500_2232/0/1715360333435?e=1727308800&v=beta&t=x53_HR1io2oe3SKKDe6uVgiOopJsx1j9hYR7pVbN7i8
 
 ![][36]
 
 
-[36]: images/1715360411760.png
+[36]: https://media.licdn.com/dms/image/D4D12AQGKIGnz4ezqeA/article-inline_image-shrink_1000_1488/0/1715360411760?e=1727308800&v=beta&t=wPfRFosm0eMc08qQtB5aSGPRlJ7H7adS4l6KovsOe08
 
 ![][37]
 
 
-[37]: images/1715360531314.png
+[37]: https://media.licdn.com/dms/image/D4D12AQEPJ5FRHdJx3A/article-inline_image-shrink_1000_1488/0/1715360531314?e=1727308800&v=beta&t=jc3nQ8ZmzNtlmoPumEAbzhliE16WSK5fUYHvWf_UxAg
 
 Let us extend this application. What we would like to do is not only search internal PDFs (specific to an Organisation) but also search over external LLMs using Oracle Generative AI,
 
@@ -620,21 +620,21 @@ Login to [cloud.oracle.com][39] we would need few parameters, to authenticate wi
 ![][40]
 
 
-[40]: images/1715492621349.png
+[40]: https://media.licdn.com/dms/image/D4D12AQFHmDfdo7lB7w/article-inline_image-shrink_1500_2232/0/1715492621349?e=1727308800&v=beta&t=vlBK2lulwJiYtAuyqJY9Sr2FjlObtl8LD8YPlroWYaA
 
 Add a new API Key or re-use an API Key if it has already been created
 
 ![][41]
 
 
-[41]: images/1715408798709.png
+[41]: https://media.licdn.com/dms/image/D4D12AQGCTaTCoBfsMA/article-inline_image-shrink_1500_2232/0/1715408798709?e=1727308800&v=beta&t=QYJQdHwIOk6KviPmIobOSRTlUidj_rSVfGEQNvg6KXo
 
 Next to API Key you can find **configuration** details as shown below.
 
 ![][42]
 
 
-[42]: images/1715408842001.png
+[42]: https://media.licdn.com/dms/image/D4D12AQE12ElYsR3cXw/article-inline_image-shrink_1000_1488/0/1715408842001?e=1727308800&v=beta&t=y4c1nL0fK6qgSRgESEZS53zq-BioJKFmlWhZMv28V08
 
 We would need to copy the following and save it in a notepad for later use:
 
@@ -703,21 +703,21 @@ Create functional declaration with any required variables -
 ![][43]
 
 
-[43]: images/1715409746505.png
+[43]: https://media.licdn.com/dms/image/D4D12AQFblG7oAOt4Ow/article-inline_image-shrink_1500_2232/0/1715409746505?e=1727308800&v=beta&t=sK8kahq76qE3t-B4unITkzNEE1h-oRg4bvvYHXh1PUc
 
 Search Internal PDFs
 
 ![][44]
 
 
-[44]: images/1715409803724.png
+[44]: https://media.licdn.com/dms/image/D4D12AQFsDTA_Bz2Ajw/article-inline_image-shrink_1500_2232/0/1715409803724?e=1727308800&v=beta&t=6qCeo_2fuYtIAgFwJxhJmqBbKRixG3ds_fDpMxkmiTs
 
 Create Search Parameters and Search Oracle Generative AI, Append both the search results and return the output back to calling function.
 
 ![][45]
 
 
-[45]: images/1715409940189.png
+[45]: https://media.licdn.com/dms/image/D4D12AQF7pxws9_S3Uw/article-inline_image-shrink_1500_2232/0/1715409940189?e=1727308800&v=beta&t=5XSFZBgpD2IqlvQzIIZPsorm-39Nr2n5Y9ztwczJO1w
 
 You can [download this complete code from my GitHub repository][46]
 
@@ -731,33 +731,33 @@ Our Oracle APEX page will have Input text box, Submit button and an Output rich 
 ![][47]
 
 
-[47]: images/1715410305544.png
+[47]: https://media.licdn.com/dms/image/D4D12AQHARzAiCHJQ1A/article-inline_image-shrink_1500_2232/0/1715410305544?e=1727308800&v=beta&t=CvROFvz8dP61V0tv2-LNKjbrCTSevzV6Sa2omMBjmos
 
 We will need a process handle submit button
 
 ![][48]
 
 
-[48]: images/1715410408885.png
+[48]: https://media.licdn.com/dms/image/D4D12AQHV2z-eOxUyUA/article-inline_image-shrink_1000_1488/0/1715410408885?e=1727308800&v=beta&t=vyRMA0FVhRaOnsRdZANJ1wF5LbcWQ67jyko8waOvR_M
 
 The PL/SQL code to call the function will be as shown below -
 
 ![][49]
 
 
-[49]: images/1715410489617.png
+[49]: https://media.licdn.com/dms/image/D4D12AQEroHUN7QsuGw/article-inline_image-shrink_1500_2232/0/1715410489617?e=1727308800&v=beta&t=1WnSMTpRyrtr4-Rvypz3g9A3jFcV7Dg4oHm77_vAX1I
 
 Thats all we would need, just run the page now
 
 ![][50]
 
 
-[50]: images/1715410651913.png
+[50]: https://media.licdn.com/dms/image/D4D12AQGhL_64zTMncA/article-inline_image-shrink_1500_2232/0/1715410651913?e=1727308800&v=beta&t=LUZ0UBtLt_awE70XyVVr5eUuOVJwwcr_WEnOn5ZcfBE
 
 ![][51]
 
 
-[51]: images/1715410924914.png
+[51]: https://media.licdn.com/dms/image/D4D12AQF1SisOxZGQfg/article-inline_image-shrink_1500_2232/0/1715410924914?e=1727308800&v=beta&t=bRRhuBqlKFUgxNaBDr3ien9__ctzu-rVod5bka2L35M
 
 
     Input How is breast cancer staged?
@@ -773,7 +773,7 @@ Thats all we would need, just run the page now
 ![][52]
 
 
-[52]: images/1715411555406.png
+[52]: https://media.licdn.com/dms/image/D4D12AQEc-o7F0gGS7g/article-inline_image-shrink_1500_2232/0/1715411555406?e=1727308800&v=beta&t=xAmPsUgl1OebdZaqkRCqyuSpOHqbHBYVVujCdrSTgLU
 
 
     Input: What is the risk of being diagnosed with breast cancer?
@@ -789,7 +789,7 @@ Thats all we would need, just run the page now
 ![][53]
 
 
-[53]: images/1715412314340.png
+[53]: https://media.licdn.com/dms/image/D4D12AQHduxo1i5uv5g/article-inline_image-shrink_1500_2232/0/1715412314340?e=1727308800&v=beta&t=xtfNBZVFflJQbDtFKwf_M1TaKDFYp6y50lyk65Rg6ec
 
 
     Input: what are the symptoms of covid-19
@@ -807,12 +807,12 @@ Thats all we would need, just run the page now
 ![][54]
 
 
-[54]: images/1715584271093.png
+[54]: https://media.licdn.com/dms/image/D4D12AQGg1TQ-sCW1Jw/article-inline_image-shrink_1500_2232/0/1715584271093?e=1727308800&v=beta&t=yfzxCU52bNREsJ4rfWmm8gzoIVmTRX07RpV1XKh6y88
 
 ![][55]
 
 
-[55]: images/1715583595019.png
+[55]: https://media.licdn.com/dms/image/D4D12AQGybVu9OmrX6Q/article-inline_image-shrink_1500_2232/0/1715583595019?e=1727308800&v=beta&t=XbHZihTJvLY2o641OIOVUWMiPFbwIt7dsgsyt9eIFLA
 
 Reference Architecture
 
