@@ -1,10 +1,11 @@
-# Oracle Database 23ai - Oracle AI Vector Search & Retrieval Augmented Generation (RAG) with Oracle APEX
+# Leveraging Open Neural Network Exchangemodels to vectorize content in PDFs
 
-This is part 2 of the Oracle Database 23ai series of technical articles. While searching for large external language models to get answers to the questions will solve one type of problem, the requirements might also differ slightly from searching for Corporate internal knowledge repositories and datasets.
+While searching for large external language models to get answers to questions will solve one type of problem, the requirements might also differ slightly from searching for Corporate internal knowledge repositories and datasets.
 
-For example, consider that your company is working on internal research and has several internal PDFs that should be searched by the AI Search engine rather than going and looking for public LLM for questions that concern us. Also, the possibility of traditional RDBMS queries along with Gen AI queries will make it more powerful.
+Imagine an organization is working on internal research and has several internal PDFs that should be searched by an AI Search engine rather than going and looking for public LLMs for relevant questions. There's also the possibility of traditional RDBMS queries along with Gen AI queries to make it more powerful.
 
-In this article, we will understand Open Neural Network Exchange (ONNX) concepts, create our own ONNX models, Use these models to read PDFs and vectorise content, and Develop an Oracle APEX Vector-based search engine that can query internal knowledge repositories or sometimes also query external large language models.
+This solution will demonstrate how to use Open Neural Network Exchange (ONNX) concepts, create our own ONNX models, and use these models to read PDFs and vectorize content, ultimately developing an Oracle APEX Vector-based search engine that can query internal knowledge repositories (or sometimes also query external large language models).
+
 
 ###  About Retrieval augmented generation (RAG)
 
@@ -16,8 +17,6 @@ The desire to get higher quality answers from LLMs is universal, spanning many i
 - **Document searches and summaries**
 - Language to code synthesis
 - Answers to questions that require specialized, **domain-specific knowledge**
-
-Please refer to the article in part 1 if you have not yet installed or configured Oracle Database 23ai, along with Oracle APEX and ORDS.
 
 In this article, we will cover the following:
 
@@ -719,10 +718,10 @@ Create Search Parameters and Search Oracle Generative AI, Append both the search
 
 [45]: images/1715409940189.png
 
-You can [download this complete code from my GitHub repository][46]
+You can [download the complete code here.][46]
 
 
-[46]: https://github.com/madhusudhanrao-ppm/code-assets/blob/main/GenAI/RAG/RAG_WITH_GENAI_FUNCTION.sql
+[46]: assets/RAG_WITH_GENAI_FUNCTION.sql
 
 ###  13. Create Oracle APEX page for AI Vector Search
 
@@ -834,25 +833,3 @@ Architecture diagram from the left side towards the right
 14. Innovation: Integrate with text to voice APIs
 
 [![Short demo](http://img.youtube.com/vi/kMoBJpr4Gt8/0.jpg)](http://www.youtube.com/watch?v=kMoBJpr4Gt8 "Short Demo")
-
-* * *
-
-###  14. Innovate: Integrate with text to voice based APIs
-
-Updated July 2024, You can easily make REST API calls (**If the service provider exposes APIs**) from AI response text to video generation APIs. Please read their terms and conditions of service providers. Most of these services will have a few minutes of free usage, and you need to subscribe to their various plans for commercial licenses.
-
-Usually, these video generations take a few seconds to a minute, so you must pragmatically check the video creation status before displaying the video using the provider's generated video URL.
-
-[![Demo](http://img.youtube.com/vi/LMRmnzwy4q8/0.jpg)](http://www.youtube.com/watch?v=LMRmnzwy4q8 "Demo")
-
-###  Click to Action:
-
-[Oracle Database Free Get Started][56]
-
-
-[56]: https://www.oracle.com/in/database/free/get-started/
-
-[Developer Resource Center][57]
-
-
-[57]: https://developer.oracle.com/
