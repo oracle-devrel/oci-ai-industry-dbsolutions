@@ -1,4 +1,4 @@
-# Leveraging Open Neural Network Exchangemodels to vectorize content in PDFs
+# Leveraging Open Neural Network Exchange models to vectorize content in PDFs
 
 While searching for large external language models to get answers to questions will solve one type of problem, the requirements might also differ slightly from searching for Corporate internal knowledge repositories and datasets.
 
@@ -6,8 +6,7 @@ Imagine an organization is working on internal research and has several internal
 
 This solution will demonstrate how to use Open Neural Network Exchange (ONNX) concepts, create our own ONNX models, and use these models to read PDFs and vectorize content, ultimately developing an Oracle APEX Vector-based search engine that can query internal knowledge repositories (or sometimes also query external large language models).
 
-
-###  About Retrieval augmented generation (RAG)
+### About Retrieval augmented generation (RAG)
 
 RAG uses the results of **similarity search to improve the accuracy and contextual relevance of large language model responses to questions about business data**. RAG helps identify contextually relevant private data that the LLM may not have been trained on and then uses it to augment user prompts so LLMs can respond with greater accuracy. RAG helps organizations provide customized answers to business questions without the high cost of retraining or fine-tuning the LLMs.
 
@@ -35,15 +34,13 @@ In this article, we will cover the following:
 13. Create an Oracle APEX page for AI Vector search
 14. Reference Architecture
 
-###  1. What is Open Neural Network Exchange?
+### 1. What is Open Neural Network Exchange?
 
 ONNX, or Open Neural Network Exchange, is an open-source format for representing machine learning models. It defines a common file format and set of operators for building machine learning and deep learning models. ONNX aims to break down the barriers between different deep learning frameworks, allowing developers to use the strengths of different libraries without getting locked into a single ecosystem. [read more at onnx.ai][1]
-
 
 [1]: https://onnx.ai/about.html
 
 ![][2]
-
 
 [2]: images/1715344779151.png
 
@@ -62,13 +59,11 @@ The Oracle Machine Learning Services REST API supports ONNX format model deploym
 
 [Read more at: Work with Oracle Machine Learning ONNX Format Models][3]
 
-
 [3]: https://docs.oracle.com/en/database/oracle/machine-learning/omlss/omlss/omls-example-onnx-ml.html
 
-###  2. Stages of Data Transformations
+### 2. Stages of Data Transformations
 
 ![][4]
-
 
 [4]: images/1715417391489.png
 
@@ -78,14 +73,13 @@ To prepare large unstructured textual data (for example, a PDF or Word document)
 
 ![][5]
 
-
 [5]: images/1715417730257.png
 
-###  3. Short Demo Video for this article
+### 3. Short Demo Video for this article
 
 Based on this article, this video shows what we plan to achieve.
 
-###  4. Upgrade Python version and Install OML4py Client
+### 4. Upgrade Python version and Install OML4py Client
 
 **VECTOR_EMBEDDING**: The VECTOR_EMBEDDING function enables you to generate embedding for different data types according to an embedding ONNX model.
 
@@ -99,7 +93,6 @@ _Note: This feature will _**_only _**_work on OML4Py client. It is not supported
 
 We will create a cloud compute Instance of **Oracle Enterprise Linux 9** and SSH into compute instance, if you are not sure how to create a compute instance [please refer my previous article on this][6]. The goal here is to install OML4Py client on OEL 9 machine with few python upgrades.
 
-
 [6]: https://www.linkedin.com/pulse/how-install-oracle-database-23ai-ords-apex-cloud-oel-instance-rao-smr5f
 
 **Download and Extract the OML4Py Client Installation File**
@@ -111,24 +104,19 @@ To download and extract the OML4Py client installation file, do the following:
 3. Select **Oracle Machine Learning for Python Client Install for Oracle Database on Linux 64 **save the zip file to an accessible directory.
 4. These instructions use a directory named oml4py, but you can download the zip file to any location accessible to the user installing the oml4py client.
 
-
 [7]: https://www.oracle.com/technetwork/database/database-technologies/python/machine-learning-for-python/downloads/index.html
 
 ![][8]
-
 
 [8]: images/1715346700078.png
 
 ![][9]
 
-
 [9]: images/1715347038280.png
 
 You will have to download this locally and then upload it to cloud machine using SCP, [please refer my previous article][10] on SCP if required.
 
-
 [10]: https://www.linkedin.com/pulse/how-install-oracle-database-23ai-ords-apex-cloud-oel-instance-rao-smr5f
-
 
     [root@devdb23aiml ~]# python3 --version
     Python 3.9.18
@@ -204,11 +192,9 @@ You will have to download this locally and then upload it to cloud machine using
 
 [Please refer this OML4Py Installation guide if required][11].
 
-
 [11]: https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlugp/install-oml4py-premises-database.html
 
 Load the packages below to ensure they have been installed successfully. Start Python and run the following commands:
-
 
     $ python3
     Python 3.12.0 (main, May  8 2024, 14:21:08)
@@ -223,11 +209,9 @@ Load the packages below to ensure they have been installed successfully. Start P
 
 ![][12]
 
-
 [12]: images/1715349973247.png
 
 **Run the OML4Py Client Installation Script**
-
 
     unzip oml4py-client-linux-x86_64-2.0.zip
 
@@ -254,16 +238,13 @@ Load the packages below to ensure they have been installed successfully. Start P
 
 ![][13]
 
-
 [13]: images/1715499456328.png
 
-###  5. Convert Pretrained Models to ONNX Format
+### 5. Convert Pretrained Models to ONNX Format
 
 Generate an ONNX file from the pre-configured model "[sentence-transformers/all-MiniLM-L6-v2][14]"
 
-
 [14]: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
-
 
     sentence-transformers/all-MiniLM-L6-v2
 
@@ -273,9 +254,7 @@ Generate an ONNX file from the pre-configured model "[sentence-transformers/all-
 
 [Convert Pretrained Models to ONNX Format][15]
 
-
 [15]: https://docs.oracle.com/en/database/oracle/oracle-database/23/vecse/convert-trained-models-onnx-format.html
-
 
     [opc@devdb23aiml oml4py]$ python3
     Python 3.12.0 (main, May 10 2024, 14:16:05) [GCC 11.4.1 20231218 (Red Hat 11.4.1-3.0.1)] on linux
@@ -298,15 +277,13 @@ Generate an ONNX file from the pre-configured model "[sentence-transformers/all-
 
 This will now create following files.
 
-
     # ls
 
-    indmodel1.onnx		post_indmodel1model.onnx
-    indmodel1file.onnx		tok_indmodel1model.onnx
+    indmodel1.onnx      post_indmodel1model.onnx
+    indmodel1file.onnx      tok_indmodel1model.onnx
     indmodel1model.onnx
 
 Please Note 1: Python, Pip and Python Libraries versions may change frequently, [please check OML4Py installation guide][16]
-
 
 [16]: https://docs.oracle.com/en/database/oracle/machine-learning/oml4py/2/mlugp/install-oml4py-premises-database.html
 
@@ -314,30 +291,14 @@ Please Note 2: Download these ONNX files from OML4Py server machine and upload i
 
 _Alternatively you can upload these ONNX files to OCI Object storage and download it from there. _
 
-###  6. Download Knowledge PDFs files to our Oracle Database 23ai Server directory
+### 6. Download Knowledge PDFs files to our Oracle Database 23ai Server directory
 
-I would like to download 2 PDFs, one related to [Breast cancer facts and figures][17]
-
+I would like to download 2 PDFs, one related to [Breast cancer facts and figures][17] and the other related to [COVID-19][19].
 
 [17]: https://www.cancer.org/content/dam/cancer-org/research/cancer-facts-and-statistics/breast-cancer-facts-and-figures/breast-cancer-facts-and-figures-2019-2020.pdf
-
-![][18]
-
-
-[18]: images/1715498322584.png
-
-and the other related to [COVID-19][19]
-
-
 [19]: https://customsitesmedia.usc.edu/wp-content/uploads/sites/110/2020/03/16232716/Coronavirus-FAQ.pdf
 
-![][20]
-
-
-[20]: images/1715498408860.png
-
 _Please Note: You can use any other PDFs as required to train. And I don't own any of these PDF files or content in it. This is just for demonstration purposes only._
-
 
     -- SSH into Oracle Database 23ai Machine --
 
@@ -354,10 +315,9 @@ _Please Note: You can use any other PDFs as required to train. And I don't own a
     breast-cancer-facts-and-figures-2019-2020.pdf
     covid-19.pdf
 
-###  7. Convert File to Text to Chunks to Embeddings
+### 7. Convert File to Text to Chunks to Embeddings
 
 Connect as SYS user and create DOCUSER
-
 
     # sqlplus sys/<Your-Password>@localhost:1521/FREEPDB1 as sysdba
 
@@ -383,7 +343,6 @@ Connect as SYS user and create DOCUSER
 
 Connect as DOCUSER
 
-
     SQL> SET ECHO ON
     SQL> SET FEEDBACK 1
     SQL> SET NUMWIDTH 10
@@ -406,16 +365,14 @@ Connect as DOCUSER
 
     DBMS_LOB.GETLENGTH(T.DATA)
     --------------------------
-    		   1393563
-    		    107457
+               1393563
+                107457
 
 ![][21]
-
 
 [21]: images/1715361732305.png
 
 Run UTL_TO_TEXT to convert the PDF document into text format:
-
 
     SELECT ct.*
       from documentation_tab dt,
@@ -423,11 +380,9 @@ Run UTL_TO_TEXT to convert the PDF document into text format:
 
 ![][22]
 
-
 [22]: images/1715358256114.png
 
 JSON parameters to use normalization and some of the custom chunking specifications:
-
 
      SELECT ct.*
       from documentation_tab dt,
@@ -444,11 +399,9 @@ JSON parameters to use normalization and some of the custom chunking specificati
 
 ![][23]
 
-
 [23]: images/1715358954759.png
 
 Convert chunks to embeddings:
-
 
      EXECUTE dbms_vector.drop_onnx_model(model_name => 'doc_model', force => true);
 
@@ -458,19 +411,17 @@ Convert chunks to embeddings:
 
 Displaying VECTOR_EMBEDDING for Hello world
 
-
     SELECT TO_VECTOR(VECTOR_EMBEDDING(doc_model USING 'Hello world' as data)) AS embedding;
 
     -- showing truncated output --
 
     '[-3.44773084E-002,3.10231932E-002,6.7349216E-003,2.61089411E-002,-3.93620469E-002,-1.60302475E-001,6.69240132E-002,-6.44139526E-003,-4.7450535E-002,1.47588924E-002,5.15955947E-002,4.81240302E-002,-3.31475399E-003,-5.82791269E-002, --- * --- ,-4.0871527E-002,-7.5788565E-002,2.75276173E-002,7.46254623E-002,1.77173186E-002,9.12184492E-002,1.10220097E-001,5.69862779E-004,5.1463306E-002,-1.45512791E-002,3.32320258E-002,2.3792224E-002,-2.28898171E-002,3.89375351E-002,3.02068312E-002]'
 
-###  8. Convert File to Embeddings
+### 8. Convert File to Embeddings
 
 You can directly extract vector embeddings from a PDF document, using a single-step statement.
 
 This statement creates a relational table (doc_chunks) from unstructured text chunks and the corresponding vector embeddings:
-
 
     drop table doc_chunks;
 
@@ -488,28 +439,23 @@ This statement creates a relational table (doc_chunks) from unstructured text ch
 
 This creates a doc_chunks table lets check this table:
 
-
     desc doc_chunks;
 
 ![][24]
 
-
 [24]: images/1715359808238.png
-
 
      Select EMBED_DATA, EMBED_VECTOR from doc_chunks where rownum < 4;
 
 ![][25]
 
-
 [25]: images/1715359583739.png
-
 
     select count(*) from doc_chunks;
 
     -- returns 367 rows --
 
-###  9. Create Oracle APEX workspace with docuser Schema
+### 9. Create Oracle APEX workspace with docuser Schema
 
 Let us use docuser that we had created earlier and create an Oracle APEX workspace for this user.
 
@@ -517,13 +463,11 @@ Login to Oracle APEX INTERNAL workspace as ADMIN user and create a new workspace
 
 ![][26]
 
-
 [26]: images/1715360729372.png
 
 Re-use existing schema -
 
 ![][27]
-
 
 [27]: images/1715360772535.png
 
@@ -531,20 +475,17 @@ Click on Create Workspace -
 
 ![][28]
 
-
 [28]: images/1715360813529.png
 
-###  10. Create Vector AI Search Application to Search PDF documents
+### 10. Create Vector AI Search Application to Search PDF documents
 
 Access Oracle APEX Navigation > SQL Commands > Create a function with following PL/SQL code - we can name this function as rag_function
 
 ![][29]
 
-
 [29]: images/1715361311977.png
 
 [Download code from my git repo][30]
-
 
 [30]: https://github.com/madhusudhanrao-ppm/code-assets/blob/main/GenAI/RAG/rag_function.sql
 
@@ -552,11 +493,9 @@ Now, lets create a simple Oracle APEX page in any application have an input text
 
 ![][31]
 
-
 [31]: images/1715362104559.png
 
 Where the PL/SQL Response Block will call rag_function as shown below.
-
 
     DECLARE
         v_input varchar2(400) := :P1_INPUT;
@@ -569,33 +508,27 @@ Just to ensure that we dont call the function without any data, lets add server 
 
 ![][32]
 
-
 [32]: images/1715362253715.png
 
 Run the page with various inputs - this will basically query the uploaded PDF files using Oracle AI Vector Search
 
 ![][33]
 
-
 [33]: images/1715360071118.png
 
 ![][34]
-
 
 [34]: images/1715360143219.png
 
 ![][35]
 
-
 [35]: images/1715360333435.png
 
 ![][36]
 
-
 [36]: images/1715360411760.png
 
 ![][37]
-
 
 [37]: images/1715360531314.png
 
@@ -606,18 +539,15 @@ for that we need fulfil two requirements
 1. Your tenancy should be whitelisted for Oracle Generative AI or the service should be available in the subscribed region.
 2. You should have required policies set by your OCI tenancy administrator to make calls to Oracle Generative AI or you should have administrative privileges in your tenancy. ( [Please check Oracle Generative AI IAM Policies][38] )
 
-
 [38]: https://docs.oracle.com/en-us/iaas/Content/generative-ai/iam-policies.htm
 
-###  11. Getting OCI User Authentication Parameters
+### 11. Getting OCI User Authentication Parameters
 
 Login to [cloud.oracle.com][39] we would need few parameters, to authenticate with Oracle Generative AI. on top right navigation click on user icon, select **User Settings**.
-
 
 [39]: http://cloud.oracle.com
 
 ![][40]
-
 
 [40]: images/1715492621349.png
 
@@ -625,13 +555,11 @@ Add a new API Key or re-use an API Key if it has already been created
 
 ![][41]
 
-
 [41]: images/1715408798709.png
 
 Next to API Key you can find **configuration** details as shown below.
 
 ![][42]
-
 
 [42]: images/1715408842001.png
 
@@ -644,7 +572,6 @@ We would need to copy the following and save it in a notepad for later use:
 5. Compartment OCID (You can get this from Compartment Page)
 
 Connect to Database as SYS user
-
 
     -- Setup Network ACL
 
@@ -659,7 +586,6 @@ Connect to Database as SYS user
 
 Connect to Database as DOCUSER
 
-
     -- Drop Credentials OCI_CRED
 
     BEGIN
@@ -669,7 +595,6 @@ Connect to Database as DOCUSER
     END;
 
 Create OCI Credentials
-
 
     declare
       jo json_object_t;
@@ -689,7 +614,7 @@ Create OCI Credentials
     end;
     /
 
-###  12. Create RAG Search Function search PDFs and External Oracle Generative AI LLMs
+### 12. Create RAG Search Function search PDFs and External Oracle Generative AI LLMs
 
 Let us now extend our PL/SQL code to not only search PDF documents (Internal PDF documents) but also look for answers from external Oracle Generative AI Large Language Models
 
@@ -701,13 +626,11 @@ Create functional declaration with any required variables -
 
 ![][43]
 
-
 [43]: images/1715409746505.png
 
 Search Internal PDFs
 
 ![][44]
-
 
 [44]: images/1715409803724.png
 
@@ -715,20 +638,17 @@ Create Search Parameters and Search Oracle Generative AI, Append both the search
 
 ![][45]
 
-
 [45]: images/1715409940189.png
 
 You can [download the complete code here.][46]
 
-
 [46]: assets/RAG_WITH_GENAI_FUNCTION.sql
 
-###  13. Create Oracle APEX page for AI Vector Search
+### 13. Create Oracle APEX page for AI Vector Search
 
 Our Oracle APEX page will have Input text box, Submit button and an Output rich text item as shown.
 
 ![][47]
-
 
 [47]: images/1715410305544.png
 
@@ -736,13 +656,11 @@ We will need a process handle submit button
 
 ![][48]
 
-
 [48]: images/1715410408885.png
 
 The PL/SQL code to call the function will be as shown below -
 
 ![][49]
-
 
 [49]: images/1715410489617.png
 
@@ -750,14 +668,11 @@ Thats all we would need, just run the page now
 
 ![][50]
 
-
 [50]: images/1715410651913.png
 
 ![][51]
 
-
 [51]: images/1715410924914.png
-
 
     Input How is breast cancer staged?
 
@@ -771,9 +686,7 @@ Thats all we would need, just run the page now
 
 ![][52]
 
-
 [52]: images/1715411555406.png
-
 
     Input: What is the risk of being diagnosed with breast cancer?
 
@@ -787,9 +700,7 @@ Thats all we would need, just run the page now
 
 ![][53]
 
-
 [53]: images/1715412314340.png
-
 
     Input: what are the symptoms of covid-19
 
@@ -801,15 +712,13 @@ Thats all we would need, just run the page now
 
     COVID-19 is a disease caused by a virus that can infect the nose, throat, and lungs. The most common symptoms of COVID-19 include: 1. Fever or chills: Feeling warmer than usual or shivering may be a sign that your body is fighting off an infection. 2. Dry cough: A dry cough is a common symptom of COVID-19 and other respiratory infections. Hacking, wheezing, or shortness of breath may occur with the cough. 3. Tiredness: Feeling extremely tired can be a sign of COVID-19 or other infections. Fatigue may be extreme and hinder your daily activities. 4. Body aches: Pain or discomfort in the muscles or joints is another symptom associated with COVID-19. 5. Headache:  ....
 
-###  14. Reference Architecture
+### 14. Reference Architecture
 
 ![][54]
-
 
 [54]: images/1715584271093.png
 
 ![][55]
-
 
 [55]: images/1715583595019.png
 
