@@ -1,12 +1,8 @@
-# Oracle Database 23ai - How to create a RAG-based chatbot with internal PDFs and Oracle Database Tables and train the AI model.
+# How to create a powerful knowledgebase chatbot with unstructured data
 
-In part 6 of the Oracle Database 23ai series, we will take an example of an organization with a rich knowledge base of several documents, PDF files, and data stored in Database tables. It would be cool if the chatbot could learn from every bit of knowledge source available internally and answer users' chat questions using natural language processing. 
+Chatbots aren’t new, but better chatbots are finally here thanks to AI services. Searching documentation is greatly enhanced with vector search instead of traditional keyword searches. And while training models on unstructured data may seem daunting, using RAG (Retrieval Augmented Generation) we can create a savvier chatbot that’s efficiently trained with new information.
 
-This article covers the following topics: Getting Access to Generative AI Agents, Creating an OCI Object Storage Bucket and uploading a Knowledge Repository, Creating a Knowledge Base and its Data Source, Starting the Data Ingestion Job, Creating a Generative AI Agent, Training PDFs, using the default AI Chat Interface, and answering questions about how we get data from the Oracle database, generate a PDF, and train the RAG AI model based chatbot. 
-
-**Updated 17th July:** The part 6 article has been updated to include the Generative AI Agents (Beta) Web User Interface (powered by **#Streamlit** server & hashtag#Python) in Article Section 12. This application would help if you want your Internal PDF/Document search hashtag#RAG application to be accessed without logging into cloud tenancy, especially for end users inside your organization who want to search the internal hashtag#Knowledge Repository without requiring access to log in into the cloud tenancy. or simply create your own end user experience for RAG Search (light theme/dark theme) 👩🎨 🤴 
-
-* * *
+The purpose of this solution is to show how to train a chatbot on a rich knowledge base of several types of documents, PDF files, and data stored in Database tables. This tutorial will show how to transform raw documents containing unstructured data into structured data, store them in OCI Object storage bucket, and utilize advanced AI models to generate contextual responses from natural language queries. Best of all, it’s highly modular so you can use a variety of models.
 
 ### Table of contents
 
@@ -47,7 +43,7 @@ Architecture
 
 ### Demo Video for this Article
 
-[![Demo Video](http://img.youtube.com/vi/DyxUFEBop08/0.jpg)](http://www.youtube.com/watch?v=DyxUFEBop08 "Demo Video")
+[![Demo Video](http://img.youtube.com/vi/kBR_YUPW6x4/0.jpg)](http://www.youtube.com/watch?v=kBR_YUPW6x4 "Demo Video")
 
 * * *
 
@@ -159,12 +155,8 @@ From the left navigation, click on the chat button, and now you are all set to a
 I have trained my chatbot on the following PDFs [Breast cancer facts & figures][15]
 
 
-[15]: https://www.cancer.org/content/dam/cancer-org/research/cancer-facts-and-statistics/breast-cancer-facts-and-figures/breast-cancer-facts-and-figures-2019-2020.pdf
+[15]: images/breast-cancer-facts-and-figures-2019-2020.pdf
 
-![][16]
-
-
-[16]: images/1720714220876.png
 and lets ask questions, we will be greeted by a welcome message 
     
     
@@ -188,12 +180,9 @@ and lets ask questions, we will be greeted by a welcome message
 Let us now check another PDF on COVID-19 [Corona Virus FAQs][19]
 
 
-[19]: https://customsitesmedia.usc.edu/wp-content/uploads/sites/110/2020/03/16232716/Coronavirus-FAQ.pdf
-
-![][20]
+[19]: images/Coronavirus-FAQ.pdf
 
 
-[20]: images/1720714425142.png
 > Disclaimer: I have provided the source to download these PDFs, and I don't own the content on any of these PDF files. They are just used for demonstration and training purposes only for this article. 
     
     
@@ -217,8 +206,6 @@ You can click on View citation, if you would like to know which PDF has been ref
 ### 08. Data from the Oracle Database, Generate a PDF and train it?
 
 We can quickly spin up an Oracle APEX instance. or use your existing Oracle APEX instance 
-
-Please refer to my part 1 article if you do not have an Oracle APEX instance. 
 
 Create a Oracle APEX page and create a report using the example SQL query shown below. 
     
@@ -466,32 +453,4 @@ and run the server again
 
 
 [43]: images/1721196637249.png
-* * *
 
-### 13. Combining Internal Knowledge Base search with Oracle Generative AI LLM and Oracle Database
-
-Updated on July 19th, I have enhanced this code to search Oracle Generative AI Public LLM and use Oracle Database as required (for example, user background, sessions, contexts, etc.), which can help further fine-tune these search results, as shown below. 
-
-For example, we may not have an Internal Knowledge repository assets on _how to make mixed fruit jam _or answer a question on _where is Tirupati_, but Oracle Gen AI LLM can answer (almost) everything. 
-
-![][44]
-
-
-[44]: images/1721372189930.png
-![][45]
-
-
-[45]: images/1721372204674.png
-* * *
-
-### Conclusion:
-
-My articles have provided several options for searching and conversing with internal knowledge repositories and external Generative AI LLMs such as Oracle GenAI, Cohere, Open AI etc. 
-
-We can use **Oracle Database 23ai Vector search**. Easily bring the power of similarity search to your business data without managing and integrating multiple databases. AI Vector Search enables you to search structured and unstructured data based on its semantics or meaning, in addition to its values. Native vector capabilities can help large language models (LLMs) deliver more accurate and contextually relevant results with retrieval-augmented generation (RAG), 
-
-**OCI Generative AI Agents** is a fully managed service that combines the power of large language models (LLMs) with an intelligent retrieval system to create contextually relevant answers by searching your knowledge base, making your AI applications smart and efficient. 
-
-OCI Generative AI Agents support several ways to onboard your data and then allow you and your customers to interact with your data using a chat interface or API. 
-
-Use **Select AI for Natural Language Interaction with your Database Oracle Autonomous Database. **Select AI enables you to query your data using natural language. The Select AI feature allows Autonomous Database to use generative AI with Large Language Models (LLMs) to convert user's input text into Oracle SQL. Select AI processes the natural language prompt, supplements the prompt with metadata, and then generates and runs a SQL query.

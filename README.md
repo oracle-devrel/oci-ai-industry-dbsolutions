@@ -2,7 +2,7 @@
 
 [![License: UPL](https://img.shields.io/badge/license-UPL-green)](https://img.shields.io/badge/license-UPL-green) [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=oracle-devrel_oci-ai-industry-dbsolutions)](https://sonarcloud.io/dashboard?id=oracle-devrel_oci-ai-industry-dbsolutions)
 
-- [Create a RAG-based chatbot with internal PDFs and Oracle Database Tables](rag-chatbot/)
+- [Create a Powerful Knowledge Base Chatbot with Unstructured Data](rag-chatbot/)
 - [Leveraging Open Neural Network Exchangemodels to vectorize content in PDFs](ai-vector-search-and-rag/)
 - [How to Translate text using OCI AI Language and Oracle APEX](text-analysis-and-translation/)
 - [How to use Oracle Select AI with Cohere or OpenAI to Generate SQLs from Natural Language](generate-sqls-from-natural-language/)
