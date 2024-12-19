@@ -131,7 +131,7 @@ nbconvert==7.16.2
 nbformat==5.10.2
 nest-asyncio==1.6.0
 networkx==3.2.1
-nltk==3.8.1
+nltk==3.9
 notebook_shim==0.2.4
 numba==0.59.0
 numpy==1.26.4
