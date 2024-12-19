@@ -202,7 +202,7 @@ sortedcontainers==2.4.0
 soupsieve==2.5
 SQLAlchemy==2.0.28
 stack-data==0.6.3
-starlette==0.37.2
+starlette==0.40.0
 strawberry-graphql==0.208.2
 streamlit==1.32.2
 striprtf==0.0.26
