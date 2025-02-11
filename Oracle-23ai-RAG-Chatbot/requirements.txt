@@ -31,7 +31,7 @@ cloudpickle==3.0.0
 cohere==4.55
 comm==0.2.2
 contourpy==1.2.0
-cryptography==42.0.5
+cryptography==44.0.1
 cycler==0.12.1
 Cython==0.29.37
 dataclasses-json==0.6.4
