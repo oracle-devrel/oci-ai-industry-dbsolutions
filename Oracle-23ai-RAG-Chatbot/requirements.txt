@@ -22,7 +22,7 @@ blinker==1.7.0
 bs4==0.0.2
 cachetools==5.3.3
 Cerberus==1.3.5
-certifi==2024.2.2
+certifi==2024.7.4
 cffi==1.16.0
 charset-normalizer==3.3.2
 circuitbreaker==1.4.0
