@@ -4,7 +4,7 @@
 
 This article provides a concise walkthrough of the essential tasks required to set up and manage Oracle Cloud Infrastructure (OCI). Readers will learn how to:
 
-- Log into their OCI account and navigate the console
+- Log in to their OCI account and navigate the console
 - Create an OCI Bucket for secure and scalable object storage
 - Establish a new compartment for organized resource management
 - Configure policies for compartment management, ensuring seamless access control
@@ -234,18 +234,34 @@ Before you start using OCI Speech, your tenancy administrator should set up the 
     Create a new policy with the below statement, replace  group-name with your group name
 
     ```
-        <copy>
-        allow group <group-name> to manage ai-service-speech-family in tenancy
-        allow group <group-name> to manage object-family in tenancy
-        allow group <group-name> to read tag-namespaces in tenancy
-        allow group <group-name> to use ons-family in tenancy
-        allow group <group-name> to manage cloudevents-rules in tenancy
-        allow group <group-name> to use virtual-network-family in tenancy
-        allow group <group-name> to manage function-family in tenancy
-        </copy>
-        ```
+    <copy>
+    allow group <group-name> to manage ai-service-speech-family in tenancy
+    allow group <group-name> to manage object-family in tenancy
+    allow group <group-name> to read tag-namespaces in tenancy
+    allow group <group-name> to use ons-family in tenancy
+    allow group <group-name> to manage cloudevents-rules in tenancy
+    allow group <group-name> to use virtual-network-family in tenancy
+    allow group <group-name> to manage function-family in tenancy
+    </copy>
+    ```
 
     ![Create policy for group information window](./images/group-name-policy.png " ") 
+
+## Task 7: Setup policies for Generative AI
+
+You can get access to OCI Generative AI resources with OCI Identity and Access Management (IAM) policies.
+
+By default, only users in the Administrators group have access to all OCI resources including Generative AI resources. If you're a member of another group, ask your administrator to assign you the least privileges that are required to perform your responsibilities by reviewing the following sections.
+
+> **Note:** Please refer [Generative AI Policies](https://docs.oracle.com/en-us/iaas/Content/generative-ai/iam-policies.htm) for more information related to this policy.
+
+1. Create a new policy with the following statements:
+  
+    ```
+    <copy>
+    allow group <your-group-name> to manage generative-ai-family in tenancy
+    allow group <your-group-name> to manage generative-ai-family in compartment <your-compartment-name> 
+    </copy>
    
 
 This concludes this lab. You can **proceed now to the next lab**.
@@ -263,4 +279,4 @@ This concludes this lab. You can **proceed now to the next lab**.
 
 * **Author** - Madhusudhan Rao B M, Principal Product Manager, Oracle Database
 
-* **Last Updated By/Date** - 11th August, 2023.
+* **Last Updated By/Date** - 13th May, 2025.

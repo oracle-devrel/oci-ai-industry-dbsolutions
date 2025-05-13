@@ -152,7 +152,7 @@ In this workshop, you'll embark on a comprehensive journey to build an intellige
     <copy> 
     DECLARE 
     l_genai_rest_url    VARCHAR2(4000) := 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat';  
-    l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';   
+    l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';   
     l_input varchar2(4000) := :P78_Q;
     l_check varchar2(50) := :P78_CHECK;
     l_response_json CLOB;
@@ -220,8 +220,8 @@ In this workshop, you'll embark on a comprehensive journey to build an intellige
     <copy> 
     declare 
         l_rest_url    VARCHAR2(4000) := 'https://language.aiservice.us-phoenix-1.oci.oraclecloud.com/20221001/actions/batchLanguageTranslation';  
-        -- Ind_OCI_WebCred is Oracle APEX OCI Web Credentials
-        l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';    
+        -- replace-this is Oracle APEX OCI Web Credentials
+        l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';    
         l_input varchar2(4000) := :P78_OP_TEXT;
         -- Target Language is Language Code
         l_target_lang varchar2(20) := :P78_TRG_LANG;
@@ -356,11 +356,11 @@ In this workshop, you'll embark on a comprehensive journey to build an intellige
         l_url := l_bucket_url||apex_util.url_encode(lr_files.filename);
         apex_web_service.g_request_headers(1).name := 'Content-Type';
         apex_web_service.g_request_headers(1).value := lr_files.mime_type;
-        -- Ind_OCI_WebCred is Oracle APEX Web Credentials 
+        -- replace-this is Oracle APEX Web Credentials 
         l_response := apex_web_service.make_rest_request(p_url                  => l_url,
                                                         p_http_method          => 'PUT',
                                                         p_body_blob            => lr_files.blob_content,
-                                                        p_credential_static_id => 'Ind_OCI_WebCred');  
+                                                        p_credential_static_id => 'replace-this');  
         ------ store in db
         INSERT INTO MY_BOOKS (FILE_NAME, file_type,FILE_CONTENT,FILE_SIZE)
             SELECT filename, mime_type,blob_content, dbms_lob.getlength(blob_content) FROM apex_application_temp_files

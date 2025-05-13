@@ -5,7 +5,7 @@
 This article provides a comprehensive walkthrough of creating a chatbot using Oracle Digital Assistant (ODA) and integrating it with Oracle APEX. Through 15 hands-on tasks, readers will learn how to:
 
 - Provision Oracle Digital Assistant from OCI services and create a new skill
-- Develop a knowledge document for FAQs and train the model
+- Develop a knowledge document for FAQS and train the Model
 - Preview and refine the model and skill
 - Enhance the chatbot with auto-complete suggestions and utterances
 - Create a web channel for the skill and configure settings
@@ -44,10 +44,10 @@ To set up the Oracle Digital Assistant on the OCI tenancy, you will:
 - Log into OCI
 - Provision Oracle Digital Assistant from OCI services
 - Create Oracle Digital Assistant skill
-- Add knowledge document for frequently asked questions (FAQs)
+- Add a knowledge document for frequently asked questions (FAQs)
 - Train the Model
 - Preview the Model and Skill
-- Add Auto complete suggestion and utterances.
+- Add auto-complete suggestions and utterances.
 - Create Web Channel for a Skill
 - Download Oracle Digital Assistant - Oracle Native Client SDK
 - Get channel id from ODA console.
@@ -80,7 +80,7 @@ To set up the Oracle Digital Assistant on the OCI tenancy, you will:
 
     ![SSO Login](images/sso-login.png)
 
-2. If you do not have administrative privileges into tenancy, you might have to login as federated user, that is the user created by the administrator
+2. If you do not have administrative privileges in the tenancy, you might have to log in as a federated user, that is, the user created by the administrator
 
     ![Federated User Login](images/direct-signin.png)
 
@@ -92,7 +92,7 @@ To set up the Oracle Digital Assistant on the OCI tenancy, you will:
  
 1.  On the Oracle Cloud Infrastructure Console Home page, click the Navigation Menu in the upper-left corner, select **Analytics & AI**, and then select **Digital Assistant**.
 
-  ![In the OCI console, select Analytics & AI, and then Digital Assistant, from right-hand side of the screen](./images/oda-navigation.png" ")
+    ![In the OCI console, select Analytics & AI](./images/oda-navigation.png " ")
 
 2.  On the OCI Digital Assistants page,  click on the **Create digital assistant instance** button
 

@@ -283,12 +283,12 @@ By the end of the workshop, attendees gained practical experience in harnessing 
         apex_web_service.g_request_headers(1).value := 'application/json';
 
         -- Make the API call
-        -- Ind_OCI_WebCred is Oracle APEX Web Credentials
+        -- replace-this is Oracle APEX Web Credentials
         l_response_text := apex_web_service.make_rest_request(
             p_url => 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat',
             p_http_method => 'POST',
             p_body => l_request_body,
-            p_credential_static_id => 'Ind_OCI_WebCred' 
+            p_credential_static_id => 'replace-this' 
         );
     
 
@@ -344,7 +344,7 @@ By the end of the workshop, attendees gained practical experience in harnessing 
             v_compartment_id varchar2(1000) := 'ocid1.compartment.oc1..yourcompartmentid'; 
             --- GenAI variables -------------------------------- 
             l_genai_rest_url    VARCHAR2(4000) := 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat';    
-            l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';     
+            l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';     
             l_response_json CLOB; 
             l_text varchar2(4000); 
             l_prompt varchar2(1000);   

@@ -32,6 +32,8 @@ These objectives clearly outline what participants can expect to learn and achie
 
 [Demo video on AI for Financial Services](youtube:jMg_G-r6wIA:large)  
 
+[Demo video on AI for Financial Services](youtube:YJMoYDS-D_o:large)  
+
 In this hands-on lab, you'll design and develop a comprehensive e-commerce food ordering system that allows customers to browse menu items, customize orders, select delivery options, and make payments seamlessly. You'll gain practical experience in database design, user interface development, and implementing key features using JSON Relational Duality Views for bulk order uploads. By completing this lab, you'll be able to build a robust and scalable food ordering system that meets the needs of customers and businesses alike.
  
 ---

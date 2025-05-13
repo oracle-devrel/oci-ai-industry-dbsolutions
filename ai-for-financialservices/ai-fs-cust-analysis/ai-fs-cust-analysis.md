@@ -101,7 +101,7 @@ These objectives clearly outline what participants can expect to learn and achie
     GC_OCI_DOC_AI_URL VARCHAR2(500) 
       := 'https://document.aiservice.us-phoenix-1.oci.oraclecloud.com/20221109/processorJobs';   
     GC_OCI_DOC_AI_TIMEOUT_SECS CONSTANT NUMBER         := 15;  
-    GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred'; --APEX_OCI_BLOG_CREDENTIAL    
+    GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'replace-this'; --APEX_OCI_BLOG_CREDENTIAL    
     GC_OCY_DOC_AI_PAYLOAD      CONSTANT VARCHAR2(32000) := ' { 
       "processorConfig": { 
           "processorType": "GENERAL", 

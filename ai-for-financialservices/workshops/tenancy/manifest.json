@@ -127,6 +127,11 @@
       "filename": "https://paulparkinson.github.io/converged/microservices-with-converged-db/financial-setup/financial-setup.md"
     },
     {
+      "title": "Lab 23: Application Deployment Guide",
+      "description": "Application Deployment Guide",
+      "filename": "../../ai-fs-deployment-guide/ai-fs-deployment-guide.md"
+    },
+    {
       "title": "Need Help?",
       "description": "Solutions to Common Problems and Directions for Receiving Live Help",
       "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"

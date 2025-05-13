@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This article provides a comprehensive walkthrough of creating an Oracle Autonomous Database 23ai instance creation and leveraging Oracle APEX to build low-code, data-driven applications. 
+This article provides a comprehensive walkthrough of creating an Oracle Autonomous Database 23ai instance and leveraging Oracle APEX to build low-code, data-driven applications. 
 
 Through a series of hands-on tasks, readers will learn how to:
 
@@ -24,7 +24,7 @@ Estimated Time: 30 minutes
 In this lab, you will:
 
 - Learn how to provision a new Oracle Autonomous Database
-- Learn some of the important Oracle APEX How to's (This is Optional)
+- Learn some of the important Oracle APEX How-tos (This is Optional)
 
 ---
 
@@ -38,7 +38,7 @@ In this lab, you will:
  
 A compartment is a collection of cloud assets, like compute instances, load balancers, databases, and so on. By default, a root compartment was created for you when you created your tenancy (for example, when you registered for the trial account). It is possible to create everything in the root compartment, but Oracle recommends that you create sub-compartments to help manage your resources more efficiently.
 
-If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges to create a compartment and should skip this first task. Oracle LiveLabs has already created a compartment for you and you should use that one. Even though you can't create a compartment, you can review the steps below to see how it is done.
+If you are using an Oracle LiveLabs-provided sandbox, you don't have the privileges to create a compartment and should skip this first task. Oracle LiveLabs has already created a compartment for you, and you should use that one. Even though you can't create a compartment, you can review the steps below to see how it is done.
 
 > **Note:**  If you already have a compartment created, you can **optionally skip this Task**.
 
@@ -95,7 +95,7 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 3. Specify basic information for the Autonomous Database:
 
     - __Compartment__ - Leave the default compartment.
-    - __Display Name__ - Enter a memorable name for the database for display purposes. For example, use __DEMO\_ADW__.
+    - __Display Name__ - Enter a memorable name for display purposes in the database. For example, use __DEMO\_ADW__.
     - __Database Name__ - Use letters and numbers only, starting with a letter. The maximum length is 30 characters.  
     <if type="freetier">
         ![Create ADW screen](./images/adb-install-00.png "Create ADW screen ") 
@@ -183,16 +183,16 @@ If you are using an Oracle LiveLabs-provided sandbox, you don't have privileges 
 
 There are several ways to run SQL queries, few most frequently used techniques are listed below.
 
-1. You can run SQL queries in APEX Workspace under **SQL Workshop** in top navigation and select Option **SQL Commands**
+1. You can run SQL queries in APEX Workspace under **SQL Workshop** in top navigation and select **SQL Commands**
 2. Copy paste SQL queries in the editor window and click on **Run** button
 
     ![SQL Commands](./images/apex-run-sql.png)
 
-3. Some times you might need to run SQL queries within an APEX page for example displaying data from a table, such SQL queries can be written in SQL Query Editor, this query executes during the page runtime. 
+3. Sometimes you might need to run SQL queries within an APEX page for example displaying data from a table, such SQL queries can be written in SQL Query Editor, this query executes during the page runtime. 
 
     ![SQL Commands](./images/apex-collection.png)
 
-4. Some times you might need to run SQL queries based on a button click, in that case create **Dynamic Action** under the button, and add **Execute server side code**
+4. You might also need to run SQL queries based on a button click, in that case create **Dynamic Action** under the button, and add **Execute server side code**
 
     ![SQL Commands](./images/apex-sendmail-5.png)
 
@@ -252,9 +252,9 @@ We will see how to login to Oracle APEX environment
 
 ## Task 9: How to create blank Oracle APEX page
 
-1. First you need to create Blank Application or Application that uses sample Apps, from there you can create APEX pages
+1. First, you need to create a Blank Application or an Application that uses sample Apps, from there you can create APEX pages
 2. Click on the Application that has been created.
-3. Click **Create Page** button blank APEX page
+3. Click the **Create Page** button blank APEX page
 
     ![APEX how tos](images/apex-01.png " ")
 
@@ -262,7 +262,7 @@ We will see how to login to Oracle APEX environment
 
     ![APEX how tos](images/apex-02.png " ")
 
-    Provide page name and **Create Page**
+    Provide the page name and **Create Page**
 
     ![APEX how tos](images/apex-03.png " ")
 

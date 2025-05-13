@@ -11,7 +11,7 @@ In this hands-on workshop, participants will learn how to design and implement a
 
 **Create users table and roles table**
 
-- Create tables to store user and role information
+- Create tables to store users and roles information
 - Define relationships between users and roles
   
 **Insert demo user records and application roles**
@@ -279,8 +279,7 @@ Estimated Time: 30 minutes
               when no_data_found then  
                 return false;  
             END custom_authenticate;   
-            
-            
+             
             /**  Register   */  
             procedure create_account(  
                 p_email    in varchar2,  
@@ -293,8 +292,7 @@ Estimated Time: 30 minutes
               l_url  varchar2(1000) ;  
             BEGIN  
               apex_debug.message(p_message => 'Begin create_site_account', p_level => 3);  
-              
-            -- l_password := utl_raw.cast_to_raw(DBMS_RANDOM.string('x',10));  
+               
             select standard_hash(p_password, 'MD5') into l_password from dual; 
               
               apex_debug.message(p_message => 'verify email exists', p_level => 3) ;  
@@ -353,8 +351,7 @@ Estimated Time: 30 minutes
               out_user_id        := l_id;  
               
             END post_authenticate;  
-              
-              
+               
             /** Reset password  */  
             procedure request_reset_password(  
                 p_email in varchar2)  
@@ -426,8 +423,7 @@ Estimated Time: 30 minutes
                 l_ret_msg :=  'Sorry, We are unable to find your profile, please create a new login profile from the login page ';
                 --or your answer does not match our records
               END IF;
-
-                
+ 
             return l_ret_msg;
             END forgot_password;
              
@@ -454,8 +450,7 @@ Estimated Time: 30 minutes
             then  
               raise_application_error( - 20002, 'Issue sending reset password email.') ;  
             END mail_reset_password;  
-            
-            
+             
             /** Reset Password  */  
             procedure reset_password(  
                 p_id       in number,  
@@ -639,7 +634,4 @@ Estimated Time: 30 minutes
 
 * **Author** - Madhusudhan Rao B M, Principal Product Manager, Oracle Database
 * **Last Updated By/Date** - April 4th, 2025
-
-## Learn more
  
-* [Oracle Digital Assistant Skills](https://docs.oracle.com/en/cloud/paas/digital-assistant/use-chatbot/create-configure-and-version-skills1.html)

@@ -72,7 +72,7 @@ AS
 v_total_pay FD_TX_HISTORIC_DATA.TOTAL_PAY%TYPE;
 v_time_diff number := 1; 
 -- Oracle APEX Web Credentials
-GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred'; 
+GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'replace-this'; 
 l_response_json CLOB;
 json_input_str3 varchar2(32000) ;
 l_api_url varchar2(1000) := 'https://anomalydetection.aiservice.us-phoenix-1.oci.oraclecloud.com/20210101/actions/detectAnomalies';

@@ -112,10 +112,10 @@ END;
 
 create or replace PACKAGE SENTIMENTAL_AI_PK AS   
    
-  GC_OCI_OBJ_STORE_BASE_URL  CONSTANT VARCHAR2(500)  := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/oradbclouducm/b/cancerdata/o/KV/';   
+  GC_OCI_OBJ_STORE_BASE_URL  CONSTANT VARCHAR2(500)  := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/replace-this/b/replace-this/o/KV/';   
   GC_OCI_DOC_AI_URL VARCHAR2(500) := 'https://document.aiservice.us-phoenix-1.oci.oraclecloud.com/20221109/processorJobs';   
   GC_OCI_DOC_AI_TIMEOUT_SECS CONSTANT NUMBER         := 15;  
-  GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred'; --APEX_OCI_BLOG_CREDENTIAL  
+  GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'replace-this'; --APEX_OCI_BLOG_CREDENTIAL  
     
  
   GC_OCY_DOC_AI_PAYLOAD      CONSTANT VARCHAR2(32000) := ' { 
@@ -132,18 +132,18 @@ create or replace PACKAGE SENTIMENTAL_AI_PK AS
         "objectLocations": [ 
             { 
                 "source": "OBJECT_STORAGE", 
-                "namespaceName": "oradbclouducm", 
-                "bucketName": "cancerdata", 
+                "namespaceName": "replace-this", 
+                "bucketName": "replace-this", 
                 "objectName": "KV/#FILE_NAME#" 
             } 
         ] 
     }, 
     "outputLocation": { 
-        "bucketName": "cancerdata", 
-        "namespaceName": "oradbclouducm", 
+        "bucketName": "replace-this", 
+        "namespaceName": "replace-this", 
         "prefix": "KV" 
     }, 
-   "compartmentId": "ocid1.compartment.oc1..aaaaaaaaud6tkdn6n23cbvc4hexs6n4hggetkwo4viqyneyroixcmj54u32q" 
+   "compartmentId": "ocid1.compartment.oc1..replace-this" 
 } ';  
 PROCEDURE process_file  
   (p_apex_file_name  IN VARCHAR2,  
@@ -391,8 +391,8 @@ BEGIN
                v_filename := row_1.file_name;  
         End Loop; 
  
-        l_obj_name   := 'KV/'||v_id||'/oradbclouducm_cancerdata/results/KV/'||v_filename||'.json'; 
-        l_docjob_json_url   := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/oradbclouducm/b/cancerdata/o/'||l_obj_name; 
+        l_obj_name   := 'KV/'||v_id||'/replace-this_replace-this/results/KV/'||v_filename||'.json'; 
+        l_docjob_json_url   := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/replace-this/b/replace-this/o/'||l_obj_name; 
  
  
          l_json := apex_web_service.make_rest_request 

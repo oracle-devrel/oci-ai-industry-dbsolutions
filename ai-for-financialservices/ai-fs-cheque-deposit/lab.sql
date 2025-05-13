@@ -79,7 +79,7 @@ begin
         p_url => 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat',
         p_http_method => 'POST',
         p_body => l_request_body,
-        p_credential_static_id => 'Ind_OCI_WebCred'--'credentials_for_ociai'
+        p_credential_static_id => 'replace-this'--'credentials_for_ociai'
     );
  
 
@@ -120,10 +120,10 @@ AS
     l_response            CLOB;  
     v_rand_no number; 
     v_filename varchar2(100); 
-    v_compartment_id varchar2(1000) := 'ocid1.compartment.oc1..aaaaaaaaud6tkdn6n23cbvc4hexs6n4hggetkwo4viqyneyroixcmj54u32q'; 
+    v_compartment_id varchar2(1000) := 'ocid1.compartment.oc1..replace-this'; 
     --- GenAI variables -------------------------------- 
     l_genai_rest_url    VARCHAR2(4000) := 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat';    
-    l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';     
+    l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';     
     l_response_json CLOB; 
     l_text varchar2(4000); 
     l_prompt varchar2(1000);   
@@ -141,7 +141,7 @@ BEGIN
  
     v_rand_no := round(DBMS_Random.Value(1,10000),0);  
     v_filename := 'Audio'||v_rand_no||'.mp3';  
-    x_object_store_url := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/oradbclouducm/b/medical_transcripts/o/Speech/'||v_filename;   
+    x_object_store_url := 'https://objectstorage.us-phoenix-1.oraclecloud.com/n/replace-this/b/medical_transcripts/o/Speech/'||v_filename;   
     --Htp.p ('Test');
      
     request_json := to_clob( 

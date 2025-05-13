@@ -63,7 +63,7 @@ Cheque Processing Workflow
             v_rand_no number; 
             v_filename varchar2(100); 
             v_compartment_id varchar2(1000) := 'ocid1.compartment.oc1..your-compartment-ocid';   
-            l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';     
+            l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';     
             l_response_json CLOB; 
             l_text varchar2(4000); 
             l_prompt varchar2(1000);   
@@ -222,7 +222,7 @@ Cheque Processing Workflow
               p_url => 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat',
               p_http_method => 'POST',
               p_body => l_request_body,
-              p_credential_static_id => 'Ind_OCI_WebCred'--'OCI web credentials'
+              p_credential_static_id => 'replace-this'--'OCI web credentials'
           );
       
 

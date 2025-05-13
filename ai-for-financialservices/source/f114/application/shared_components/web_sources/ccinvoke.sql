@@ -1,0 +1,76 @@
+prompt --application/shared_components/web_sources/ccinvoke
+begin
+--   Manifest
+--     WEB SOURCE: CCInvoke
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2024.11.30'
+,p_release=>'24.2.0'
+,p_default_workspace_id=>7477895910065199
+,p_default_application_id=>114
+,p_default_id_offset=>8992108442064454
+,p_default_owner=>'DEMOUSER'
+);
+wwv_flow_imp_shared.create_web_source_module(
+ p_id=>wwv_flow_imp.id(3242730453493344)
+,p_name=>'CCInvoke'
+,p_static_id=>'ccinvoke'
+,p_web_source_type=>'NATIVE_ORDS'
+,p_data_profile_id=>wwv_flow_imp.id(3241645831493323)
+,p_remote_server_id=>wwv_flow_imp.id(3050590055732620)
+,p_url_path_prefix=>'bank/issuecreditcard'
+,p_attribute_01=>'N'
+,p_version_scn=>42293963890116
+);
+wwv_flow_imp_shared.create_web_source_param(
+ p_id=>wwv_flow_imp.id(3244511328493356)
+,p_web_src_module_id=>wwv_flow_imp.id(3242730453493344)
+,p_name=>'cust_id'
+,p_param_type=>'HEADER'
+,p_data_type=>'VARCHAR2'
+,p_is_required=>false
+);
+wwv_flow_imp_shared.create_web_source_param(
+ p_id=>wwv_flow_imp.id(3244934497493357)
+,p_web_src_module_id=>wwv_flow_imp.id(3242730453493344)
+,p_name=>'customer_name'
+,p_param_type=>'HEADER'
+,p_data_type=>'VARCHAR2'
+,p_is_required=>false
+);
+wwv_flow_imp_shared.create_web_source_operation(
+ p_id=>wwv_flow_imp.id(3242949338493348)
+,p_web_src_module_id=>wwv_flow_imp.id(3242730453493344)
+,p_operation=>'GET'
+,p_database_operation=>'FETCH_COLLECTION'
+,p_url_pattern=>'.'
+,p_force_error_for_http_404=>false
+,p_allow_fetch_all_rows=>false
+);
+wwv_flow_imp_shared.create_web_source_operation(
+ p_id=>wwv_flow_imp.id(3243390039493352)
+,p_web_src_module_id=>wwv_flow_imp.id(3242730453493344)
+,p_operation=>'POST'
+,p_database_operation=>'INSERT'
+,p_url_pattern=>'.'
+,p_allow_fetch_all_rows=>false
+);
+wwv_flow_imp_shared.create_web_source_operation(
+ p_id=>wwv_flow_imp.id(3243748181493353)
+,p_web_src_module_id=>wwv_flow_imp.id(3242730453493344)
+,p_operation=>'PUT'
+,p_database_operation=>'UPDATE'
+,p_url_pattern=>'/:id'
+,p_allow_fetch_all_rows=>false
+);
+wwv_flow_imp_shared.create_web_source_operation(
+ p_id=>wwv_flow_imp.id(3244137063493355)
+,p_web_src_module_id=>wwv_flow_imp.id(3242730453493344)
+,p_operation=>'DELETE'
+,p_database_operation=>'DELETE'
+,p_url_pattern=>'/:id'
+,p_allow_fetch_all_rows=>false
+);
+wwv_flow_imp.component_end;
+end;
+/

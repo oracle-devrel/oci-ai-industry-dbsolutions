@@ -67,7 +67,7 @@ END;
 DECLARE
   
   l_genai_rest_url    VARCHAR2(4000) := 'https://inference.generativeai.us-chicago-1.oci.oraclecloud.com/20231130/actions/chat';  
-  l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';   
+  l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';   
   l_input varchar2(4000) := :P78_Q;
   l_check varchar2(50) := :P78_CHECK;
   l_response_json CLOB;
@@ -75,7 +75,7 @@ DECLARE
    
 l_ocigabody varchar2(32000) := ' 
 {
-    "compartmentId": "ocid1.compartment.oc1..aaaaaaaaud6tkdn6n23cbvc4hexs6n4hggetkwo4viqyneyroixcmj54u32q",
+    "compartmentId": "ocid1.compartment.oc1..replace-this",
     "servingMode": {
         "servingType": "ON_DEMAND",
         "modelId": "cohere.command-r-08-2024"
@@ -199,7 +199,7 @@ DECLARE
   l_length      NUMBER;
   l_response    CLOB;    
   failed_upload EXCEPTION;
-  l_bucket_url varchar2(4000) := 'https://oradbclouducm.objectstorage.us-phoenix-1.oci.customer-oci.com/n/oradbclouducm/b/X-Ray-Lung-Cancer-for-Training/o/KB/';
+  l_bucket_url varchar2(4000) := 'https://replace-this.objectstorage.us-phoenix-1.oci.customer-oci.com/n/replace-this/b/X-Ray-Lung-replace-this-for-Training/o/KB/';
 BEGIN
   FOR lr_files in (SELECT * FROM apex_application_temp_files WHERE name = :P78_FILE) 
   LOOP 
@@ -209,7 +209,7 @@ BEGIN
     l_response := apex_web_service.make_rest_request(p_url                  => l_url,
                                                      p_http_method          => 'PUT',
                                                      p_body_blob            => lr_files.blob_content,
-                                                     p_credential_static_id => 'Ind_OCI_WebCred');  
+                                                     p_credential_static_id => 'replace-this');  
     ------ store in db
     INSERT INTO PDF_BOOKS (FILE_NAME, file_type,FILE_CONTENT,FILE_SIZE)
         SELECT filename, mime_type,blob_content, dbms_lob.getlength(blob_content) FROM apex_application_temp_files
@@ -285,7 +285,7 @@ END;
 declare
  
         l_rest_url    VARCHAR2(4000) := 'https://language.aiservice.us-phoenix-1.oci.oraclecloud.com/20221001/actions/batchLanguageTranslation';  
-        l_web_cred        CONSTANT VARCHAR2(50)   := 'Ind_OCI_WebCred';    
+        l_web_cred        CONSTANT VARCHAR2(50)   := 'replace-this';    
         l_input varchar2(4000) := :P78_OP_TEXT;
         l_target_lang varchar2(20) := :P78_TRG_LANG;
         l_src_lang varchar2(10);  
@@ -299,7 +299,7 @@ declare
                             "languageCode": "auto"  
                           } ],
                           "targetLanguageCode": "'||l_target_lang||'" ,
-                           "compartmentId": "ocid1.compartment.oc1..aaaaaaaaud6tkdn6n23cbvc4hexs6n4hggetkwo4viqyneyroixcmj54u32q"
+                           "compartmentId": "ocid1.compartment.oc1..replace-this"
                  
         }';    
          

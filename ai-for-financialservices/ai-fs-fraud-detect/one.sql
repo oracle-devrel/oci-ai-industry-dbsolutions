@@ -453,3 +453,120 @@ end;
 /
 
 ----------------
+Select 1 as sort_order,
+apex_page.get_url (p_page => 36 ) as LINK1,
+'Open Bank Account' title,
+'' data,
+'bankaccount' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 36 ) as link
+from dual
+
+union all
+
+Select 2 as sort_order,
+apex_page.get_url (p_page => 41 ) as LINK1,
+'Update My Profile' title,
+'' AS data,
+'updateprofile' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 41 ) as link
+from dual
+
+union all
+
+Select 3 as sort_order,
+apex_page.get_url (p_page => 56 ) as LINK1,
+'Apply for Card' title,
+'' data,
+'applyforcard' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 56 ) as link
+from dual  
+
+union all
+
+Select 4 as sort_order,
+apex_page.get_url (p_page => 31 ) as LINK1, 
+'Application History' title,
+'' data,
+'applicationhistory' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 31 ) as link
+from dual
+
+union all
+
+Select 5 as sort_order,
+apex_page.get_url (p_page => 58 ) as LINK1,
+'Online Shopping' title,
+'' data,
+'cart' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 58 ) as link
+from dual
+
+union all
+
+Select 6 as sort_order,
+apex_page.get_url (p_page => 85 ) as LINK1,
+'ATM Cash Withdrawal' title,
+'' data,
+'cashwithdrawal' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 85 ) as link
+from dual
+
+union all
+
+Select 7 as sort_order,
+apex_page.get_url (p_page => 78 ) as LINK1,
+'Cheque Deposit' title,
+'' data,
+'chequedeposit' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 78 ) as link
+from dual
+
+union all
+
+Select 8 as sort_order,
+apex_page.get_url (p_page => 78 ) as LINK1,
+'Generate Bank Statement' title,
+'' data,
+'bankstatement' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 78 )  as link
+from dual
+
+union all
+
+Select 9 as sort_order,
+apex_page.get_url (p_page => 78 ) as LINK1,
+'Funds Transfer' title,
+'' data,
+'fundtransfer' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 78 )  as link
+from dual
+
+union all
+
+Select 10 as sort_order,
+apex_page.get_url (p_page => 78 ) as LINK1,
+'Home Loan EMI' title,
+'' data,
+'loanemi' as icon_class,
+'green' as class1,
+'green' as class2,
+apex_page.get_url (p_page => 78 )  as link
+from dual
