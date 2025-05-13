@@ -1,0 +1,140 @@
+{
+  "workshoptitle": "AI for Financial Services",
+  "include": {  
+    "iam-compartment-create-body.md": "https://raw.githubusercontent.com/oracle-livelabs/common/main/building-blocks/tasks/iam/compartment-create-body.md",
+    "adb-goto-service-body.md": "https://raw.githubusercontent.com/oracle-livelabs/common/main/building-blocks/tasks/adb/goto-service-body.md",
+    "adb-provision-body.md": "https://raw.githubusercontent.com/oracle-livelabs/common/main/building-blocks/tasks/adb/provision-body.md"
+  },
+  "help": "madhusudhan.rao@oracle.com",
+  "tutorials": [
+    {
+      "title": "Introduction",
+      "description": "Financial Services Use cases",
+      "filename": "../../introduction/introduction.md"
+    },
+    {
+      "title": "Get Started",
+      "description": "This is the prerequisites for customers using Free Trial and Paid tenancies, and Always Free accounts (if applicable). The title of the lab and the Contents Menu title (the title above) match for Prerequisite lab. This lab is always first.",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login.md"
+    },
+    {
+      "title": "Lab 1: Setup OCI Policies",
+      "filename": "../../ai-fs-setup/ai-fs-setup.md"
+    },
+    {
+      "title": "Lab 2: Create an Oracle Autonomous Database",
+      "description": "Provision an Autonomous Database",
+      "filename": "../../ai-fs-provision/ai-fs-provision.md"
+    },
+    {
+      "title": "Lab 3: Initiating a Conversation with a Chatbot",
+      "description": "Initiating a Conversation with a Chatbot",
+      "filename": "../../ai-oda-create/ai-oda-create.md"
+    },
+    {
+      "title": "Lab 4: User Profile Management: Creation and Updates",
+      "description": "Initiating a Conversation with a Chatbot",
+      "filename": "../../ai-fs-custom-auth/ai-fs-custom-auth.md"
+    },
+    {
+      "title": "Lab 5: Account Creation: Establishing a New Bank Account",
+      "description": "Account Creation: Establishing a New Bank Account",
+      "filename": "../../ai-fs-create-account/ai-fs-create-account.md"
+    },
+    {
+      "title": "Lab 6: Application Review Business Processes",
+      "description": "Application Review Business Processes",
+      "filename": "../../ai-fs-app-approval/ai-fs-app-approval.md"
+    },
+    {
+      "title": "Lab 7: Credit Card Applications: Applying for a New Credit Card",
+      "description": "Credit Card Applications: Applying for a New Credit Card",
+      "filename": "../../ai-fs-apply-for-card/ai-fs-apply-for-card.md"
+    },
+    {
+      "title": "Lab 8: External Fund Transfer: Transferring Money to an Internal Bank Account",
+      "description": "External Fund Transfer: Transferring Money to an Internal Bank Account",
+      "filename": "../../ai-fs-ext-fund-transfer/ai-fs-ext-fund-transfer.md"
+    },
+    {
+      "title": "Lab 9: Internal Fund Transfer: Transferring Funds Between Accounts",
+      "description": "Internal Fund Transfer: Transferring Funds Between Accounts",
+      "filename": "../../ai-fs-int-fund-transfer/ai-fs-int-fund-transfer.md"
+    },
+    {
+      "title": "Lab 10: Cheque Deposit: Depositing Cheques at an ATM",
+      "description": "Cheque Deposit: Depositing Cheques at an ATM",
+      "filename": "../../ai-fs-cheque-deposit/ai-fs-cheque-deposit.md"
+    },
+    {
+      "title": "Lab 11: Cash Withdrawal: Withdrawing Cash from an ATM",
+      "description": "Cash Withdrawal: Withdrawing Cash from an ATM",
+      "filename": "../../ai-fs-cash-withdrawal/ai-fs-cash-withdrawal.md"
+    },
+    {
+      "title": "Lab 12: Statement Generation: Accessing Bank Statements",
+      "description": "Statement Generation: Accessing Bank Statements",
+      "filename": "../../ai-fs-statement/ai-fs-statement.md"
+    },
+    {
+      "title": "Lab 13: Home Loan Planning: Calculating Equated Monthly Installments (EMIs)",
+      "description": "Home Loan Planning: Calculating Equated Monthly Installments (EMIs)",
+      "filename": "../../ai-fs-emi/ai-fs-emi.md"
+    },
+    {
+      "title": "Lab 14: Fraud Detection and Alerts: Identifying Suspicious Credit Card Activity",
+      "description": "Fraud Detection and Alerts: Identifying Suspicious Credit Card Activity",
+      "filename": "../../ai-fs-fraud-detect/ai-fs-fraud-detect.md"
+    },
+    {
+      "title": "Lab 15: Anti-Money Laundering and Money Mule Detection",
+      "description": "Anti-Money Laundering and Money Mule Detection",
+      "filename": "../../ai-fs-anti-money-laundering/ai-fs-anti-money-laundering.md"
+    },
+    {
+      "title": "Lab 16: Suspicious Transaction Alerts and Monitoring",
+      "description": "Suspicious Transaction Alerts and Monitoring",
+      "filename": "../../ai-fs-suspected-transactions/ai-fs-suspected-transactions.md"
+    },
+    {
+      "title": "Lab 17: Customer Analysis",
+      "description": "Customer Analysis",
+      "filename": "../../ai-fs-cust-analysis/ai-fs-cust-analysis.md"
+    },
+    {
+      "title": "Lab 18: E-commerce Food Ordering System",
+      "description": "E-commerce Food Ordering System",
+      "filename": "../../ai-fs-retail/ai-fs-retail.md"
+    },
+    {
+      "title": "Lab 19: AI Search and RAG Knowledge Repository",
+      "description": "AI Search and RAG Knowledge Repository",
+      "filename": "../../ai-fs-search/ai-fs-search.md"
+    },
+    {
+      "title": "Lab 20: Build a Robust Suspected Transaction Review Business Process & Analytics",
+      "description": "Build a Robust Suspected Transaction Review Business Process & Analytics",
+      "filename": "../../ai-fs-process/ai-fs-process.md"
+    },
+    {
+      "title": "Lab 21: Ensuring Business Continuity: High Availability and Disaster Recovery",
+      "description": "Ensuring Business Continuity: High Availability and Disaster Recovery",
+      "filename": "../../ai-fs-cloning/ai-fs-cloning.md"
+    },
+    {
+      "title": "Lab 22: Scaling, Sizing, and Performance",
+      "description": "Scaling, Sizing, and Performance",
+      "filename": "https://paulparkinson.github.io/converged/microservices-with-converged-db/financial-setup/financial-setup.md"
+    },
+    {
+      "title": "Lab 23: Application Deployment Guide",
+      "description": "Application Deployment Guide",
+      "filename": "../../ai-fs-deployment-guide/ai-fs-deployment-guide.md"
+    },
+    {
+      "title": "Need Help?",
+      "description": "Solutions to Common Problems and Directions for Receiving Live Help",
+      "filename": "https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}
