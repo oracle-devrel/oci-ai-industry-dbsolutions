@@ -88,7 +88,7 @@ kiwisolver==1.4.5
 langchain
 langchain-community
 langchain-core
-langchain-text-splitters==0.0.1
+langchain-text-splitters==1.0.0a1
 langsmith==0.1.25
 llama-index
 llama-index-agent-openai==0.1.5
