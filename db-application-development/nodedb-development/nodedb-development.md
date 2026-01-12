@@ -1,0 +1,322 @@
+# Developing Node.js Applications for Oracle Autonomous AI Database
+
+## Introduction
+
+Node.js, an asynchronous event-driven JavaScript runtime, is designed to build scalable network applications. Thread-based networking is relatively inefficient and very difficult to use. Furthermore, users of Node.js are free from worries of dead-locking the process since there are no locks. Almost no function in Node.js directly performs I/O, so the process never blocks except when the I/O is performed using synchronous methods of the Node.js standard library. Because nothing blocks, scalable systems are very reasonable to develop in Node.js.
+
+### About this Lab
+
+This Lab uses node-oracledb module, which lets you do SQL, PL/SQL, and Oracle's document storage, SODA calls. Node-oracledb can be used with TypeScript or directly with Node.js. 
+
+Estimated Time: 20 minutes
+ 
+### Objectives
+ 
+In this lab, you will: 
+
+* Write Node.js code to access Oracle Database 
+* Run the code
+
+### Prerequisites 
+
+This lab assumes:
+
+* An Autonomous Database has been created.
+* A wallet has been downloaded. 
+* One-way TLS connection has been configured.
+ 
+## Task 1: Install the Oracle Instant Client Basic Package
+ 
+### macOS
+ 
+Download the free Oracle Instant Client Basic DMG file from [Instant Client Downloads for macOS (Intel x86).](https://www.oracle.com/database/technologies/instant-client/macos-intel-x86-downloads.html)  
+
+Mount the DMG and run its install_ic.sh script. [More details are in the Instant Client installation instructions](https://www.oracle.com/database/technologies/instant-client/macos-intel-x86-downloads.html#ic_osx_inst).
+
+> **Note:** This Lab does not work on Apple M1 Chip. You can use [Rosetta] (https://en.wikipedia.org/wiki/Rosetta_(software)) which is not shown in this Lab. 
+
+```
+<copy>
+      $ ./install_ic.sh
+</copy>
+```  
+
+### Microsoft Windows
+
+Download the free Oracle Instant Client Basic zip file from [Oracle Instant Client for Microsoft Windows (x64) 64-bit](https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html) . (If your Node.js is 32-bit, then you will need to download the 32-bit Basic package from here instead). Remember to install the matching VS Re distributable, as shown on the download page.
+
+Extract the libraries to an accessible directory. For example,  the libraries could be in C:\oracle\instantclient\_19\_8
+
+### Oracle Linux
+ 
+If you are using Oracle Linux 7, run these commands
+
+```
+<copy>
+sudo yum install oracle-instantclient-release-el7
+sudo yum install oracle-instantclient-basic
+</copy>
+```   
+
+If you are using Oracle Linux 8, run these commands
+
+```
+<copy>
+sudo dnf install oracle-instantclient-release-el8 
+sudo dnf install oracle-instantclient-basic
+</copy>
+```   
+
+For other Linux flavors, install the Instant Client zip files and follow the instructions from the download page: [Instant Client for Linux x86-64 (64-bit)](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html). If you use zip files, make sure to run ldconfig or set LD\_LIBRARY\_PATH as shown in the instructions.
+
+You can also refer [Database Client Installation Guide for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/21/lacli/install-instant-client-using-zip.html#GUID-D3DCB4FB-D3CA-4C25-BE48-3A1FB5A22E84)
+
+Download instantclient-basic-windows.zip and extract the file, please check the latest version, this article is using instantclient_23_8
+   
+## Task 2: Extract an Autonomous Database wallet under the Instant Client network/admin folder
+ 
+### macOS
+   
+Move the Autonomous Database wallet zip file that you had downloaded in Lab 1 under /instantclient\_19\_8/network/admin directory
+
+```
+<copy>
+      mv Wallet_*.zip $HOME/Downloads/instantclient_19_8/network/admin 
+</copy>
+``` 
+
+```
+<copy> 
+      cd $HOME/Downloads/instantclient_19_8/network/admin 
+</copy>
+``` 
+
+Extract the wallet zip file under **/network/admin** folder of **Instant Client**
+
+```
+<copy> 
+      unzip Wallet_*.zip
+</copy>
+``` 
+
+### Microsoft Windows 
+ 
+Move the Autonomous Database wallet zip file that you downloaded in Lab 1 into the network\admin directory of Instant Client.
+ 
+Make a network\admin sub-directory in your Instant Client directory, for example, C:\oracle\instantclient\_19\_8\network\admin.
+ 
+### Oracle Linux
+
+Move the credentials zip file to the network/admin sub-directory of your Instant Client directory and unzip it.  
+  
+```
+<copy> 
+sudo cp Wallet_*.zip /usr/lib/oracle/21/client64/lib/network/admin/
+sudo sh -c 'cd /usr/lib/oracle/21/client64/lib/network/admin/ && unzip -B Wallet_*.zip'
+</copy>
+``` 
+
+### Instant client folder structure
+
+![Wallet folder](images/instant-client-folder.png)
+ 
+## Task 3: Install Node.js
+
+### macOS
+
+Install [Node.js](https://nodejs.org/en/download/) by downloading and installing the macOS installer package.
+ 
+### Microsoft Windows 
+ 
+Install Node.js by downloading the MSI package, clicking it, and following the prompts.
+
+Restart terminal windows, if necessary, so that the new Node.js binary is found.
+
+### Linux
+
+Install Node.js. If you are using Oracle Linux 8 run these commands.
+
+```
+<copy> 
+sudo yum install oracle-nodejs-release-el8
+sudo yum install nodejs
+</copy>
+``` 
+For generic installation steps, see [Node.js Downloads](https://nodejs.org/en/download/).
+```
+<copy> 
+npm --version
+11.6.0
+node --version
+v24.8.0
+</copy>
+```
+ 
+## Task 4: Install node-oracledb
+ 
+
+1. Using your favourite editor, create a new file *package.json* in a directory of your choice. It should contain the following:
+ 
+      ```
+      <copy>
+      {
+            "name": "Demo",
+            "version": "1.0.0",
+            "private": true,
+            "description": "Demo app",
+            "keywords": [
+                  "myapp"
+            ],
+            "dependencies": {
+                  "oracledb": "^6.6.0"
+            },
+            "author": "You",
+            "license": "MIT"
+      }
+      </copy>
+      ``` 
+
+      Please replace "oracledb": "< to any latest version >" if required
+
+      ```
+      <copy>
+      npm install 
+      </copy>
+      ```  
+ 
+## Task 5: Node.js Application to select data from a table
+
+1. In this example, you create a Node.js application that connects to the database using Oracle Instant Client. Create __customers360.js__ in the same directory as **package.json**
+
+      ```
+      <copy>
+      const oracledb = require("oracledb");
+      const fs = require("fs");
+
+      // On Windows and macOS, you can specify the directory containing the Oracle
+      // Client Libraries at runtime, or before Node.js starts.  On other platforms
+      // the system library search path must always be set before Node.js is started.
+      // See the node-oracledb installation documentation.
+      // If the search path is not correct, you will get a DPI-1047 error.
+
+      // let libPath; 
+      // for example you can use environment variable as shown below 
+      // if (process.platform === "win32") {
+      //    Windows
+      //      libPath = "C:\\oracle\\instantclient_19_8";
+      //} else if (process.platform === "darwin") {
+      //       macOS
+      //      libPath = process.env.HOME + "/Downloads/instantclient_19_8";
+      //} 
+       
+      // or directly provide the libpath
+      // replace with your instant client path, please use latest version of instant client  
+      // libPath =  "/Users/username/Workarea/Polyglot/instantclient_19_8"; 
+      //if (libPath && fs.existsSync(libPath)) {
+      //oracledb.initOracleClient({
+      //      libDir: libPath
+      //});
+      //}
+
+      // Example connectionString for _high connection
+      // "(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.sa-saopaulo-1.oraclecloud.com))(connect_data=(service_name=hmugvwhgda3dbym_adbdw110612_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))"
+
+      async function run() {
+            let connection;
+
+            try {
+                  connection = await oracledb.getConnection({
+                        user: "<db_user>",
+                        password: "<password>",
+                        connectionString: "<DBName_high>",
+                  });
+
+                  console.log("Connected to DB and select from customers360 table");
+
+                  result = await connection.execute(
+                        "select * from customers360 where rownum < 10",
+                        [], {
+                        resultSet: true,
+                        outFormat: oracledb.OUT_FORMAT_OBJECT
+                        }
+                  );
+
+                  const rs = result.resultSet;
+
+                  let row;
+                  while ((row = await rs.getRow())) {
+                        console.log(row);
+                  }
+                  await rs.close(); 
+
+            } catch (err) {
+
+                  console.error(err);
+
+            } finally {
+
+                  if (connection) {
+                        try {
+                        await connection.close();
+                        } catch (err) {
+                        console.error(err);
+                        }
+                  }
+            }
+      }
+
+      run();
+      </copy>
+      ``` 
+
+      In **oracledb.getConnection()** Substitute <db\_user\>, <password\> and <DBName\_high\> depending upon the configuration in Lab 1
+
+ 2. Run customers360.js 
+
+      ```
+      <copy>
+            node customers360.js
+      </copy>
+      ```   
+
+3.  View the customer data from customers360 table
+   
+      ![Node output](images/node-output.png)
+
+      
+      This completes the lab. At this point, you know how to create a Node.js application that connects to Oracle Autonomous Database. You may now **proceed to the next lab**.
+
+## Error Message
+
+1. Connection Refused by Listener
+
+      ```
+            Error: NJS-511: connection to listener at host 192.29.50.X port 1522 was refused. (CONNECTION_ID=db3aVwpT/1dgL9Ffuqa5SA==)
+            Cause: ORA-12506
+            at Object.throwErr (/source-codes/NodeJS-codes/node_modules/oracledb/lib/errors.js:776:10)
+            at NetworkSession.connect2 (/source-codes/NodeJS-codes/node_modules/oracledb/lib/thin/sqlnet/networkSession.js:249:18)
+            at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+            at async NetworkSession.connect1 (/source-codes/NodeJS-codes/node_modules/oracledb/lib/thin/sqlnet/networkSession.js:336:23)
+            at async NetworkSession.connect (/NodeJS-codes/node_modules/oracledb/lib/thin/sqlnet/networkSession.js:623:5)
+            at async ThinConnectionImpl.connect (/Users/madhusudhanrao/github/dbdevrel/db-application-development/source-codes/NodeJS-codes/node_modules/oracledb/lib/thin/connection.js:859:5)
+            at async Object.getConnection (/NodeJS-codes/node_modules/oracledb/lib/oracledb.js:791:3)
+            at async Object.getConnection (/NodeJS-codes/node_modules/oracledb/lib/util.js:298:16)
+            at async run (/NodeJS-codes/customers360.js:36:26) {
+            code: 'NJS-511',
+            isRecoverable: false
+            }
+      ``` 
+
+      **Solution**: Ensure that Mutual TLS (mTLS) authentication is Required and Access control list is Enabled with your desktop/laptop machine IP address added to ACL, please refer Lab 1 and Task 6. Also ensure that Instance client has wallet details in /instantclient\_23\_8/network/admin folder
+
+## Learn More
+
+* [Quick Start: Developing Node.js Applications for Oracle Autonomous Database](https://www.oracle.com/database/technologies/appdev/quickstartnodejs.html) 
+* [How do I start with Node.js](https://nodejs.org/en/docs/guides/getting-started-guide/) 
+* [Node API Examples](https://oracle.github.io/node-oracledb/doc/api.html#getstarted)    
+* [Code Examples: node-oracledb](https://github.com/oracle/node-oracledb) 
+ 
+## Acknowledgements
+
+- **Author** - Madhusudhan Rao, Principal Product Manager, Database
+* **Last Updated By/Date** -  Madhusudhan Rao, Nov 12th, 2025

@@ -1,0 +1,17 @@
+{
+   "workshoptitle": "Create Oracle Autonomous AI Database 26ai",
+   "help": "madhusudhan.rao@oracle.com",
+   "tutorials": [
+      {
+         "title": "Create Oracle Autonomous AI Database 26ai",
+         "description": "",
+         "filename": "create-db/createadb26ai-dev.md"
+      },
+      {
+         "title": "Create Spring Boot Application",
+         "description": "",
+         "filename": "spring-boot-app/spring-boot-app.md"
+      } 
+   ],
+   "task_type": "Sections"
+}

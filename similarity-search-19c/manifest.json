@@ -1,0 +1,12 @@
+{
+   "workshoptitle": "Create Similarity Search for Oracle Database 19c using Sentence Transformers Model, LangChain, Steamlit and Python",
+   "help": "madhusudhan.rao@oracle.com",
+   "tutorials": [
+      {
+         "title": "Create Similarity Search for Oracle Database 19c using Sentence Transformers Model, LangChain, Steamlit and Python",
+         "description": "",
+         "filename": "similarity-search.md"
+      } 
+   ],
+   "task_type": "Sections"
+}

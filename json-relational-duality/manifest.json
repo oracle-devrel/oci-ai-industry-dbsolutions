@@ -1,0 +1,12 @@
+{
+   "workshoptitle": "JSON Relational Duality Views in Oracle Database",
+   "help": "madhusudhan.rao@oracle.com",
+   "tutorials": [ 
+      {
+         "title": "JSON Relational Duality Views in Oracle Database",
+         "description": "",
+         "filename": "json-relational-duality.md"
+      } 
+   ],
+   "task_type": "Sections"
+}

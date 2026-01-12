@@ -1,0 +1,280 @@
+# Develop Python Applications for Oracle Autonomous AI Database
+
+## Introduction
+
+The python-oracledb driver allows Python 3 applications to connect to Oracle Database. Python-oracledb is the new name for the Python cx_Oracle driver.
+
+### About this Lab
+
+By default, python-oracledb runs in a Thin mode which connects directly to Oracle Database. This mode does not need Oracle Client libraries. However, some additional functionality is available when python-oracledb uses them. Python-oracledb is in Thick mode when Oracle Client libraries are used. Both modes have comprehensive functionality supporting the Python Database API v2.0 Specification.
+
+![python oracledb thin architecture](images/python-oracledb-thin-arch.png =75%x*  "python oracledb thin architecture")
+       
+### Features
+
+* Python-oracledb is the new name for the popular Python cx_Oracle driver for Oracle Database.
+* Python-oracledb 1.0 is a new major release - the successor to cx_Oracle 8.3
+* Python-oracledb is simple and small to install  
+* Python-oracledb is now a Thin driver by default - it connects directly to Oracle Database. 
+* Python-oracledb has comprehensive functionality conforming to the Python Database API v2.0 Specification, with many additions and just a couple of exclusions.
+* A Thick mode can be optionally enabled by an application call. This mode has similar functionality to cx_Oracle and supports Oracle Database features that extend the Python DB API. To use this mode, the widely used and tested Oracle Client libraries such as from Oracle Instant Client must be installed separately.
+* Python-oracledb runs on many platforms, including favourites like Linux, macOS and Windows. It can also be used on platforms where Oracle Client libraries are not available (such as Apple M1, Alpine Linux, or IoT devices), or where the client libraries are not easily installed (such as some cloud environments).
+
+Estimated Time: 20 minutes
+
+### Objectives
+
+In this lab, you will:
+
+* Write Python code to access Oracle Database using python-oracledb with an Autonomous Database wallet. 
+* Run Python code without an Autonomous Database wallet (wallet-less) using a One-way TLS connection string copied from Lab 1  
+  
+### Prerequisites
+
+This lab assumes:
+
+* An Autonomous Database has been created.
+* A wallet has been downloaded. 
+* One-way TLS connection has been configured.
+* Please Note: On few Beta versions of Mac OS, the wallet less code might not work
+<!-- * One-way TLS connection has been configured. -->
+
+## Task 1: Install Python
+
+To use python-oracledb you need Python Python 3.8, 3.9, 3.10, 3.11, 3.12 or 3.13 depending on the operating system. 
+
+### macOS
+
+Use Python 3.7 to 3.10. Install [Python 3](https://www.python.org/downloads/macos/).   
+
+### Microsoft Windows 
+
+Use Python 3.7 to 3.10. Install [Python 3](https://www.python.org/downloads/windows/).  
+
+### Oracle Linux 
+
+Use Python 3.6 to 3.10. Install [Python 3](https://yum.oracle.com/oracle-linux-python.html).  
+ 
+1. Check the Python version 
+
+      ```
+      <copy>
+      python3 --version
+      -- Returns Python version for example
+      -- Python 3.11.6
+      </copy>
+      ```   
+
+      On Oracle Linux 8, you can use pre-installed Python 3.6, and On Oracle Linux 7, you might need to install [Python 3](https://yum.oracle.com/oracle-linux-python.html).
+ 
+## Task 2: Install Python-oracledb
+
+1. Install python-oracledb use to the following command. The --user option may be useful if you do not have permission to write to system directories
+2. Please follow the complete installation instructions from [Installing python-oracledb](https://python-oracledb.readthedocs.io/en/latest/user_guide/installation.html).
+
+      ```
+      <copy> 
+      python3 -m pip install oracledb
+      -- please check the installation guide if required
+      -- python3 -m pip install oracledb cryptography --upgrade --user
+      </copy>
+      ```   
+      The installation --user option is useful when you do not have permission to write to system directories:
+      ```
+      <copy> 
+            python3 -m pip install oracledb --upgrade --user
+      </copy>
+      ```  
+
+      ![Install oracledb](images/install-oracledb.png)
+  
+## Task 3: Develop a Python Application using a wallet
+
+1. In this Task, we will develop a Python application using an Autonomous Database wallet. For python-oracledb in Thin mode, only two files from the wallet zip file are required.
+
+      ![Wallet folder](images/wallet-folder.png)
+
+* **tnsnames.ora** - Maps net service names used for application connection strings to your database services
+
+* **ewallet.pem** - Enables SSL/TLS connections in Thin mode. Keep this file secure
+
+      Copy these two files into a folder named *mywalletfiles* in any directory of your choice, 
+  
+      Create a Python script file *sales360.py* 
+
+      ```
+      <copy> 
+      import oracledb   
+
+      # database username and password 
+      username = "<db_user>"
+      user_pwd = "<password>"
+
+      # for example
+      # username = "demouser"
+      # user_pwd = "Welcome1234#"
+      
+      # directory containing the ewallet.pem and tnsnames.ora  
+      wall_config_dir = "/<path_to_config_folder_mywalletfiles>"
+
+      # for example here mywalletfiles folder contains extracted zip file
+      # wall_config_dir = "/Users/username/Workarea/Polyglot/wallet/mywalletfiles"
+
+      # wallet password 
+      wall_pwd = "<wallet_password>"
+  
+      # connection string name for example demoadw_high
+      # please check tnsnames.ora file in your database wallet to get tns_name 
+      # or refer Lab 1 for more details
+
+      tns_name = "<connectionname>"
+
+      # for example
+      # tns_name = "adbdw110612_high"
+
+      connection = oracledb.connect(user=username, 
+                                    password=user_pwd,
+                                    dsn=tns_name,
+                                    config_dir=wall_config_dir,
+                                    wallet_location=wall_config_dir,
+                                    wallet_password=wall_pwd)
+
+      with connection.cursor() as cursor:
+            sql = """select * from sales360 where rownum < 10"""
+            for r in cursor.execute(sql):
+                  print(r)
+      </copy>
+      ``` 
+
+      Substitute <db\_user\>, <password\>, <path\_to\_config\_folder\_mywalletfiles\> and <connectionname\> based on your configurations in Lab 1 
+
+      Run the Python code using
+
+      ```
+      <copy>
+            python3 sales360.py 
+      </copy>
+      ``` 
+
+      The output will be sales data.
+
+      ![Python Code](images/python-code.png)
+   
+## Task 4: [Optional] Python Application Development with One-way TLS wallet-less connection 
+ 
+1. To make a wallet-less connection with Autonomous Database, Task 5 (One-way TLS connection to Oracle Autonomous Database for wallet-less connections) in Lab 1 of this workshop has to be completed.
+2. Copy connection string from where we had downloaded our Autonomous Database Wallet
+   ![Python Code](images/copy-connection.png)
+
+3. Create *customers360.py* to view data in the customers360 table.  
+ 
+      ```
+      <copy> 
+      import oracledb 
+
+      # database username and password  
+      username = "<db_user>"
+      user_pwd = "<password>"
+
+      # connection string copied from Lab 1, Task 5. or copy paste connection string from above step.
+      tlsconnstr = """(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.your-region.oraclecloud.com))(connect_data=(service_name=hmugvxxxxxbym_adbdw12121_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))"""
+
+      connection = oracledb.connect(user=username, password=user_pwd, dsn=tlsconnstr)
+
+      with connection.cursor() as cursor:
+            sql = """select * from customers360 where rownum < 10"""
+            for r in cursor.execute(sql):
+                  print(r) 
+
+      </copy>
+      ``` 
+
+      ![Python Code Walletless](images/sample-walletless-code.png)
+
+      Substitute tls connection string
+
+3. Run the python code using
+
+      ```
+      <copy>
+      python3 customers360.py 
+      </copy>
+      ``` 
+
+      You will now be able to view customer data from customers360 table.  
+
+      ![Run Python Code Walletless](images/without-mtls.png) 
+
+## Error Messages
+
+1. Error oracledb.thin\_impl.ThinConnImpl.\_connect\_with\_address
+
+      ```
+      <copy>
+      % python3 customers360.py 
+      Traceback (most recent call last):
+      File "src/oracledb/impl/thin/connection.pyx", line 404, in oracledb.thin_impl.ThinConnImpl._connect_with_address
+      File "src/oracledb/impl/thin/protocol.pyx", line 288, in oracledb.thin_impl.Protocol._connect_phase_one
+      File "src/oracledb/impl/thin/protocol.pyx", line 470, in oracledb.thin_impl.Protocol._process_message
+      File "src/oracledb/impl/thin/protocol.pyx", line 446, in oracledb.thin_impl.Protocol._process_message
+      File "src/oracledb/impl/thin/messages/connect.pyx", line 102, in oracledb.thin_impl.ConnectMessage.process
+      File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/oracledb/errors.py", line 199, in _raise_err
+      raise error.exc_type(error) from cause
+      oracledb.exceptions.OperationalError: DPY-6000: Listener refused connection. (Similar to ORA-12506)
+
+      The above exception was the direct cause of the following exception:
+
+      Traceback (most recent call last):
+      File "/Users/madhusudhanrao/github/dbdevrel/db-application-development/source-codes/customers360.py", line 10, in <module>
+      connection = oracledb.connect(user=username, password=user_pwd, dsn=tlsconnstr)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/oracledb/connection.py", line 1698, in connect
+      return conn_class(dsn=dsn, pool=pool, params=params, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/oracledb/connection.py", line 892, in __init__
+      impl.connect(params_impl)
+      File "src/oracledb/impl/thin/connection.pyx", line 526, in oracledb.thin_impl.ThinConnImpl.connect
+      File "src/oracledb/impl/thin/connection.pyx", line 522, in oracledb.thin_impl.ThinConnImpl.connect
+      File "src/oracledb/impl/thin/connection.pyx", line 465, in oracledb.thin_impl.ThinConnImpl._connect_with_params
+      File "src/oracledb/impl/thin/protocol.pyx", line 446, in oracledb.thin_impl.Protocol._process_message
+      File "src/oracledb/impl/thin/connection.pyx", line 408, in oracledb.thin_impl.ThinConnImpl._connect_with_address
+      File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/oracledb/errors.py", line 199, in _raise_err
+      raise error.exc_type(error) from cause
+      oracledb.exceptions.OperationalError: DPY-6005: cannot connect to database (CONNECTION_ID=GfCDL1AKMXB51k6T6e1waQ==).
+      DPY-6000: Listener refused connection. (Similar to ORA-12506) 
+      </copy>
+      ``` 
+
+      **Solution**: Edit Network in the Autonomous Database Console and make Mutual TLS (mTLS) authentication **Not required** and Enable **Access control list** and add your laptop/desktop machine IP address from where the Python code is running. 
+
+      The **Edit Access Control List** dialog box is displayed. select the type of address list entries and the corresponding values. You can include the required IP addresses, hostnames, or Virtual Cloud Networks (VCNs). The ACL limits access to only the IP addresses or VCNs that have been defined and blocks all other incoming traffic.  
+
+      ![access control list](images/add-acl.png =75%x*  "access control list") 
+
+      In the **Edit Mutual TLS Authentication** dialog box, **un-check** the **Require mutual TLS (mTLS) authentication** checkbox  and click **Save Changes**.
+
+      ![access type](images/edit-mtls.png =50%x*  "access type")
+
+      After update
+
+      ![access type](images/edit-mtls2.png =50%x*  "access type") 
+
+      Please check **Lab 1** and **Task 6**
+
+      Simply it means, if you have Autonomous Database Wallet then connect from any machine using wallet in the path, Or if you do not have wallet then make **Mutual TLS** (mTLS) authentication **Required** and **ACL** Access control list **Disabled**
+ 
+      You successfully made it to the end this of this. You may now  **proceed to the next lab**.
+
+## Learn More
+    
+* [Quick Start: Developing Python Applications for Oracle Autonomous Database](https://www.oracle.com/database/technologies/appdev/python/quickstartpython.html)
+* [python-oracledb documentation](https://python-oracledb.readthedocs.io/en/latest/index.html)  
+* [Easy wallet-less connections to Oracle Autonomous Databases in Python](https://blogs.oracle.com/opal/post/easy-way-to-connect-python-applications-to-oracle-autonomous-databases)
+* [Code Examples: python-oracledb](https://github.com/oracle/python-oracledb) 
+* [Installing python-oracledb](https://python-oracledb.readthedocs.io/en/latest/user_guide/installation.html)
+* [Getting Started with Python and Oracle Database](https://apexapps.oracle.com/pls/apex/r/dbpm/livelabs/view-workshop?wid=3482)
+  
+## Acknowledgements
+
+- **Author** - Madhusudhan Rao, Principal Product Manager, Database
+* **Last Updated By/Date** -  Madhusudhan Rao, Nov 12th, 2025

@@ -1,0 +1,12 @@
+{
+   "workshoptitle": "Create Oracle Autonomous AI Database 26ai - Developer Version",
+   "help": "madhusudhan.rao@oracle.com",
+   "tutorials": [
+      {
+         "title": "Create Oracle Autonomous AI Database 26ai - Developer Version",
+         "description": "",
+         "filename": "createadb26ai-dev.md"
+      } 
+   ],
+   "task_type": "Sections"
+}

@@ -1,0 +1,12 @@
+{
+   "workshoptitle": "Oracle Database API for MongoDB Developers",
+   "help": "madhusudhan.rao@oracle.com",
+   "tutorials": [ 
+      {
+         "title": "Oracle Database API for MongoDB Developers",
+         "description": "",
+         "filename": "mongodb-api.md"
+      } 
+   ],
+   "task_type": "Sections"
+}

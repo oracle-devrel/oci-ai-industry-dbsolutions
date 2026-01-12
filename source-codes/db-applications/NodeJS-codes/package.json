@@ -1,0 +1,14 @@
+{
+    "name": "Demo",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Demo app",
+    "keywords": [
+            "myapp"
+    ],
+    "dependencies": {
+            "oracledb": "^6.6.0"
+    },
+    "author": "You",
+    "license": "MIT"
+}
