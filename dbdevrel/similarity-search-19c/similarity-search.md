@@ -40,7 +40,6 @@ This lab assumes you have:
  
 **Download Source Code** - similaritysearch.py and Create Table script - create-table.sql from [GitHub Repository](https://github.com/madhusudhanrao-ppm/dbdevrel/tree/main/source-codes/similaritysearch) 
 
-
 ## Task 1: Create Table and Insert Sample Records
 
 1. Create Table in Oracle Database 19c (Alternatively You can also use 23ai or 26ai) and insert few sample records
@@ -340,6 +339,59 @@ This lab assumes you have:
 3. Search for **Surgical Plan**
 
     ![Create Stack](images/05.png )
+
+## Task 6: Using Langchain Oracle Vector Database - langchain_oracledb
+
+1. Establish connection with Oracle Database 
+
+    ```
+    <copy>
+    import oracledb
+
+    # Please update with your username, password, hostname, port and service_name
+    username = "<username>"
+    password = "<password>"
+    dsn = "<hostname>:<port>/<service_name>"
+
+    connection = oracledb.connect(user=username, password=password, dsn=dsn)
+    print("Connection successful!")
+    </copy>
+    ```
+
+2. Use Oracle Vector Database with OracleVS. More information can be found in [Oracle AI Vector Search: Vector Store documentation](https://docs.langchain.com/oss/python/integrations/vectorstores/oracle).
+
+    ```
+    <copy>
+    from langchain_oracledb.vectorstores import OracleVS
+    from langchain_oracledb.vectorstores.oraclevs import create_index
+
+    from langchain_community.embeddings import HuggingFaceEmbeddings
+    from langchain_community.vectorstores.utils import DistanceStrategy
+
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/paraphrase-mpnet-base-v2"
+    )
+    vector_store = OracleVS(conn, embedding_model, "TB10", DistanceStrategy.EUCLIDEAN_DISTANCE)
+
+    # add texts to the vector database
+    texts = ["A tablespace can be online (accessible) or offline (not accessible) whenever the database is open.\nA tablespace is usually online so that its data is available to users. The SYSTEM tablespace and temporary tablespaces cannot be taken offline.", "The database stores LOBs differently from other data types. Creating a LOB column implicitly creates a LOB segment and a LOB index. "]
+    metadata = [
+        {"id": "100", "link": "Document Example Test 1"},
+        {"id": "101", "link": "Document Example Test 2"},
+    ]
+
+    vector_store.add_texts(texts, metadata)
+
+    create_index(
+        conn, vector_store, params={"idx_name": "hnsw_oravs", "idx_type": "HNSW"}
+    )
+
+    # perform siliarity search
+    vs.similarity_search("How does a database stores LOBs?", 1)
+    </copy>
+    ```
+
+    Please refer our [GitHub repo](https://github.com/oracle/langchain-oracle/tree/main/libs/oracledb) for more examples on using langchain oracledb
    
 ## Learn More & Downloads
  
@@ -351,4 +403,4 @@ This lab assumes you have:
 ## Acknowledgements
 
 * **Author** - Madhusudhan Rao, Principal Product Manager, Oracle Database DevRel 
-* **Last Updated By/Date** - 4th Dec, 2025
+* **Last Updated By/Date** - 3rd Jan, 2026

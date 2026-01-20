@@ -1,0 +1,12 @@
+{
+   "workshoptitle": "Natural Language Processing with Oracle Select AI",
+   "help": "madhusudhan.rao@oracle.com",
+   "tutorials": [ 
+      {
+         "title": "Natural Language Processing with Oracle Select AI",
+         "description": "Natural Language Processing with Oracle Select AI",
+         "filename": "nlp-with-selectai.md"
+      } 
+   ],
+   "task_type": "Sections"
+}
