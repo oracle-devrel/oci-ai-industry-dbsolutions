@@ -46,7 +46,7 @@ executing==2.0.1
 fastavro==1.9.4
 fastjsonschema==2.19.1
 filelock==3.13.1
-fonttools==4.49.0
+fonttools==4.61.0
 fqdn==1.5.1
 frozenlist==1.4.1
 fsspec==2024.2.0
