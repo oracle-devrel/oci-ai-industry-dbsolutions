@@ -127,7 +127,7 @@ mistune==3.0.2
 multidict==6.0.5
 mypy-extensions==1.0.0
 nbclient==0.10.0
-nbconvert==7.16.2
+nbconvert==7.17.0
 nbformat==5.10.2
 nest-asyncio==1.6.0
 networkx==3.2.1
